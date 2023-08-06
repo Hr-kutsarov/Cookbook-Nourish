@@ -10,6 +10,7 @@ export default function ClientComponent() {
 
   // Create a Supabase client configured to use cookies
   const supabase = createClientComponentClient()
+  
 
   useEffect(() => {
     const getTodos = async () => {
