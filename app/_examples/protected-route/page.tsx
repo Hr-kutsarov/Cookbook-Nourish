@@ -8,7 +8,11 @@ import { cookies } from 'next/headers'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
+// No longer valid
 export const dynamic = 'force-dynamic'
+// correct syntax
+export const revalidate = 0
+
 
 export default async function ProtectedRoute() {
   const supabase = createServerComponentClient({ cookies })
