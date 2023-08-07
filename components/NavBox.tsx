@@ -1,19 +1,22 @@
 'use client'
  
 import { usePathname } from 'next/navigation'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { HiHome, HiOutlineShoppingCart,HiUser } from 'react-icons/hi'
 import { BiSearch, BiNews } from 'react-icons/bi'
 import { HiInboxArrowDown, HiWrenchScrewdriver, HiMiniAtSymbol, HiMapPin,HiOutlineUserCircle,HiOutlineHeart } from 'react-icons/hi2'
 import NavItem from './NavItem'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
+import { useRouter } from 'next/navigation'
 
 interface NavigationProps {
     children?: React.ReactNode
 }
 
 const Navigation: React.FC<NavigationProps> = ({ children }) => {
+    const [user, setUser] = useState<string>('')
+
 
     const pathname = usePathname()
 
@@ -21,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
         {
             icon: HiHome,
             label: 'Home',
-            active: pathname !== '/search',
+            active: pathname == '/',
             href: '/'
         },
         {
@@ -63,11 +66,9 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
     ], [pathname])
 
   return (
-        <div className='flex flex-row overflow-x-auto'>
-        <nav className='flex flex-row gap-4 '>
+        <nav className='hidden md:flex flex-row overflow-x-auto gap-1 ml-8'>
             {routes.map((route) => (<NavItem key={route.label} {...route}/>))}
         </nav>
-        </div>
      );
 }
 

@@ -24,15 +24,17 @@ const NavItem: React.FC<NavItemProps> = ({
             gap-2
             text-sm 
             font-medium 
-            cursor-pointer 
-            hover:text-green-400 
-            text-green-600 
-            transition py-1
+            cursor-pointer
+            transition
             rounded-lg
-            px-3
-            py-2
-            `, active && `bg-slate-600`)}>
-                <Icon size={28}/><p className='truncate w-100'>{label}</p>
+            px-2
+            py-1
+            text-slate-600
+            `, 
+            active && `bg-slate-200`, 
+            active && `text-pink-600`,
+            )}>
+                <Icon size={20}/><p className='truncate w-100'>{label}</p>
         </Link>
      );
 }
