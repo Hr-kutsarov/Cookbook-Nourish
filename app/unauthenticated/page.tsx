@@ -14,7 +14,7 @@ export default async function Unauthenticated() {
     return (
         <div className='bg-slate-50 p-4 rounded-lg mg-4'>
         <h1>Please sign in</h1>
-        <Link href='/'>Home</Link>
+        <Link href='/login'>Login</Link>
         </div>
     
     )
