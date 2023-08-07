@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import SideMenu from '@/components/SideMenu/SideMenu'
 import './globals.css'
 
 export const metadata = {
@@ -13,9 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className='flex flex-col bg-slate-100 w-full h-full'>
         <Header />
           {/* <SupabaseProvider> */}
+          <SideMenu />
             {children}
           {/* </SupabaseProvider> */}
       </body>
