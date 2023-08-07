@@ -2,24 +2,32 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
+import useLoginModal from '@/hooks/authModal'
+import { Dispatch, SetStateAction } from "react";
 
-export default function LogoutButton() {
+
+function LogoutButton({setUser}:{setUser: Dispatch<SetStateAction<string>>}) {
   const router = useRouter()
-
-  // Create a Supabase client configured to use cookies
+  const handler = useLoginModal()
   const supabase = createClientComponentClient()
 
   const signOut = async () => {
+    setUser('')
     await supabase.auth.signOut()
+    router.push('/login')
+    handler.onOpen
     router.refresh()
+
   }
 
   return (
     <button
-      className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+      className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-pink-800 to-slate-900 "
       onClick={signOut}
     >
       Logout
     </button>
   )
 }
+
+export default LogoutButton;
