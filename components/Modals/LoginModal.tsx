@@ -20,7 +20,7 @@ const LoginModal: React.FC<ModalProps> = ({
     onSubmit,
     onClose
 }) => {
-    const handler = useLoginModal()
+    const handler = useLoginModal();
 
     return (
     <>
@@ -41,11 +41,12 @@ const LoginModal: React.FC<ModalProps> = ({
             p-8
             min-w-[450px]
             rounded-md
+            absolute
             "
         >
             <span 
-            className="flex flex-col items-end cursor-pointer text-slate-500"
-            onClick={handler.onClose}>
+            className="flex flex-col items-end cursor-pointer text-slate-500 hover:text-rose-700"
+            onClick={onClose}>
                 <IoMdClose size={28}/>
             </span>
             {children}

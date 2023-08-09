@@ -1,25 +1,22 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Suspense } from 'react'
 import Loading from '../browse/loading'
-import Link from 'next/link'
+
  
 import LoginModal from '@/components/Modals/LoginModal'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
+import useLoginModal from '@/hooks/authModal'
 
 export default function Login() {
   const supabase = createClientComponentClient();
-
-  useEffect(() => {
-
-  })
+  const authModalHandler = useLoginModal();
 
   return (
-    <section className='bg-slate-600 w-full h-full flex justify-center items-center'>
+    <section className='bg-slate-200 w-full h-full flex justify-center items-center'>
       {/* <div className="flex flex-col w-[400px] p-8 rounded-md gap-2 bg-white shadow-md"> */}
 
         {/* <Link
@@ -43,7 +40,7 @@ export default function Login() {
           Back
         </Link> */}
       <Suspense fallback={<Loading />}>
-      <LoginModal isOpen>
+      <LoginModal isOpen={authModalHandler.isOpen} onClose={authModalHandler.onClose}>
         <Auth
           supabaseClient={supabase}
           appearance={{ 
@@ -51,8 +48,10 @@ export default function Login() {
             variables: {
               default: {
                 colors: {
+                  // text-rose-900
                   brand: '#881337',
-                  brandAccent: '#be123c',
+                  // text-rose-700
+                  brandAccent: '#be123c', 
                 },
               },
             },
@@ -62,7 +61,12 @@ export default function Login() {
           magicLink
         />
         </LoginModal>
-        </Suspense>
+        <section className='sm:max-w-lg p-16 flex flex-col gap-4 justify-center rounded-md'>
+          <h1 className='text-5xl font-extralight '>You must be logged in to visit this page.</h1>
+          <h1 className='text-5xl font-extralight '>Please sign in.</h1>
+          
+        </section>
+      </Suspense>
         
     </section>
   )

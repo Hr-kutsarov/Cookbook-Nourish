@@ -30,7 +30,7 @@ const NavAuth: React.FC = () => {
             <Link
                 onClick={handler.onOpen}
                 href="/login"
-                className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-pink-700 to-slate-900 mr-3"
+                className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-rose-700 to-slate-900 mr-3"
               >
                 Login
             </Link>)

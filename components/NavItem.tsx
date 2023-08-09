@@ -32,7 +32,7 @@ const NavItem: React.FC<NavItemProps> = ({
             text-slate-600
             `, 
             active && `bg-slate-200`, 
-            active && `text-pink-600`,
+            active && `text-pink-700`,
             )}>
                 <Icon size={20}/><p className='truncate w-100'>{label}</p>
         </Link>
