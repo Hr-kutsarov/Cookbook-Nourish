@@ -1,7 +1,7 @@
 import useCreateFood from "@/hooks/createFoodModal";
 import { IoMdArrowDropright } from 'react-icons/io';
 
-const CreateFoodItemModal:React.FC = () => {
+const CreateFoodItemModalButton:React.FC = () => {
     const toggleFoodForm = useCreateFood();
 
     return (
@@ -12,4 +12,4 @@ const CreateFoodItemModal:React.FC = () => {
     )
 }
 
-export default CreateFoodItemModal;
+export default CreateFoodItemModalButton;

@@ -1,11 +1,12 @@
 'use client'
 import { motion, AnimatePresence  } from 'framer-motion'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useSideMenu from '@/hooks/sideMenu';
+import CreateFoodItemModalButton from '@/components/SideMenu/CreateFoodItemButton'
 
 const SideMenu: React.FC = () => {
     const toggler = useSideMenu();
-    
+
     return (
         <AnimatePresence>
         {toggler.isOpen && (
@@ -30,24 +31,12 @@ const SideMenu: React.FC = () => {
                 mt-[3.9rem]
                 `}>
                 <aside>
+                    
+                    <CreateFoodItemModalButton />
                     <p>
                         aside
                     </p>
-                    <p>
-                        aside
-                    </p>
-                    <p>
-                        aside
-                    </p>
-                    <p>
-                        aside
-                    </p>
-                    <p>
-                        aside
-                    </p>
-                    <p>
-                        aside
-                    </p>
+
                 </aside>
             </motion.div>
         )}
