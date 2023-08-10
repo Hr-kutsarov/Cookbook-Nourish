@@ -4,6 +4,8 @@ import { IoMdClose } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion';
 import useCreateFood from "@/hooks/createFoodModal";
 import FoodItemForm from './FoodItemForm';
+import useSideMenu from '@/hooks/sideMenu';
+import { useEffect } from 'react';
 
 interface ModalProps {
     isOpen?: boolean;
@@ -26,7 +28,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
     return (
     <AnimatePresence>
     {handler.isOpen && (
-        <section className="flex bg-transparent w-full h-full absolute items-center justify-center">
+        <section className="flex w-full h-full absolute z-50 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
         <motion.div 
         initial={{opacity: 0, x: '-100vh'}}
         animate={{opacity: 1, x: '0'}}
@@ -35,6 +37,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
             duration: 0.4,
             type: "spring",
             bounce: 0.15,
+            delay: 0.2
         }}
         className="
             flex 
@@ -48,10 +51,20 @@ const CreateFoodModal: React.FC<ModalProps> = ({
             "
         >
             <span 
-            className="flex flex-col items-end cursor-pointer text-slate-500 hover:text-rose-
+            className="flex flex-col relative items-end cursor-pointer group text-slate-500 hover:text-rose-
             00"
             onClick={handler.onClose}>
                 <IoMdClose size={28}/>
+                {/* tooltip */}
+                <span
+                    className='absolute pr-8 right-0 hidden group-hover:flex'
+                >
+                    <span
+                        className='bg-slate-100 relative flex text-slate-600 px-3 py-2 items-center rounded-md shadow-md'
+                    >
+                        Close
+                    </span>
+                </span>
             </span>
             {children}
             <h1 className='text-5xl font-extralight'>Create</h1>
