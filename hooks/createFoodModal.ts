@@ -8,7 +8,7 @@ interface CreateFoodProps {
 }
 
 const useCreateFood = create<CreateFoodProps>((set) => ({
-    isOpen: true,
+    isOpen: false,
     onOpen: () => set({ isOpen: true}),
     onClose: () => set({ isOpen: false}),
 })
