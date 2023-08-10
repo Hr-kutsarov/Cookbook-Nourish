@@ -6,7 +6,7 @@ const CreateFoodItemModalButton:React.FC = () => {
 
     return (
     <button 
-        className=' flex justify-between  w-full text-slate-500 hover:text-slate-800 text-sm font-bold transition-transform hover:translate-x-1'
+        className=' flex justify-between  w-full text-slate-500 hover:text-slate-800 text-sm font-bold transition-all duration-200 hover:translate-x-1'
         onClick={toggleFoodForm.isOpen ? toggleFoodForm.onClose : toggleFoodForm.onOpen}>Add Food Item <IoMdArrowDropright size={18} />
     </button>
     )
