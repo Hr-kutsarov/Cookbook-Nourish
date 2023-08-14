@@ -30,13 +30,13 @@ const NavAuth: React.FC = () => {
             <Link
                 onClick={handler.onOpen}
                 href="/login"
-                className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-rose-700 to-slate-900 mr-3"
+                className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-green-600 to-green-900 mr-3 focus:outline-none"
               >
                 Login
             </Link>)
         : (
-            <span className='flex flex-row gap-4 items-center px-3 py-1 rounded-md'>
-                <p className='text-slate-600 font-bold text-xs'>{user}</p>
+            <span className='flex flex-row gap-4 items-center  px-3 py-1 rounded-md focus:outline-none'>
+                <p className='hidden text-slate-600 md:flex font-bold text-xs'>{user}</p>
                 <LogoutButton setUser={setUser} />
             </span>
         )}

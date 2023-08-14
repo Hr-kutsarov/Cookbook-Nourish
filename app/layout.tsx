@@ -1,7 +1,13 @@
+// styling 
+import './globals.css'
+
+
+// components
 import Header from '@/components/Header'
 import SideMenu from '@/components/SideMenu/SideMenu'
-import './globals.css'
 import CreateFoodModal from '@/components/Modals/CreateFoodItem/CreateFoodItemModal'
+import TransitionClientElement from '@/components/Transition/TransitionClientElement'
+import MainMenu from '@/components/SideMenu/MainMenu'
 
 export const metadata = {
   title: 'Nourish',
@@ -20,6 +26,7 @@ export default function RootLayout({
         <Header />
           {/* <SupabaseProvider> */}
           <CreateFoodModal />
+          <MainMenu />
           <SideMenu />
             {children}
           {/* </SupabaseProvider> */}

@@ -6,6 +6,7 @@ interface NavItemProps {
     icon: IconType;
     label: string;
     active?: boolean;
+    primary?: boolean;
     href: string;
 }
 
@@ -13,7 +14,8 @@ const NavItem: React.FC<NavItemProps> = ({
     icon: Icon, 
     label, 
     active, 
-    href
+    href,
+    primary
 }) => {
     return ( 
         <Link href={href} className={twMerge(`
@@ -29,13 +31,15 @@ const NavItem: React.FC<NavItemProps> = ({
             rounded-lg
             px-2
             py-1
-            text-slate-600
+            text-slate-400
             focus:outline-none
+            relative
             `, 
             active && `bg-slate-200`, 
-            active && `text-pink-700`,
+            active && `text-green-800`,
             )}>
-                <Icon size={20}/><p className='truncate w-100'>{label}</p>
+                <Icon size={24}/>
+                {primary ? <p className='truncate w-100 hidden lg:flex'>{label}</p> : null}
         </Link>
      );
 }

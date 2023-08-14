@@ -66,8 +66,8 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
     ], [pathname])
 
   return (
-        <nav className='hidden md:flex flex-row overflow-x-auto gap-1 ml-8'>
-            {routes.map((route) => (<NavItem key={route.label} {...route}/>))}
+        <nav className='flex flex-row h-auto gap-1 ml-8 relative'>
+            {routes.map((route) => (<NavItem key={route.label} {...route} primary/>))}
         </nav>
      );
 }

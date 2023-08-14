@@ -1,10 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import Link from 'next/link'
-import LogoutButton from '../components/LogoutButton'
-import SupabaseLogo from '../components/SupabaseLogo'
-import NextJsLogo from '../components/NextJsLogo'
-import NavBox from '@/components/NavBox'
+
+import { motion } from 'framer-motion'
 export const dynamic = 'force-dynamic'
 
 interface IndexProps {
@@ -19,9 +16,14 @@ const Index: React.FC<IndexProps> = async ({children}) => {
   } = await supabase.auth.getUser()
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {children}
-    </div>
+      <section className='grid m-auto bg-slate-200 w-full h-full items-center justify-center'>
+      <h1
+        className='text-5xl font-extralight'
+        >
+          Home
+        </h1>
+        {children}
+      </section>
   )
 }
 

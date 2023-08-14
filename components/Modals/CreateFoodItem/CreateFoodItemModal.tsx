@@ -51,18 +51,15 @@ const CreateFoodModal: React.FC<ModalProps> = ({
             "
         >
             <span 
-            className="flex flex-col relative items-end cursor-pointer group text-slate-500 hover:text-rose-
-            00"
+            className="flex flex-col relative items-end cursor-pointer group text-slate-500 hover:text-rose-800 justify-center"
             onClick={handler.onClose}>
                 <IoMdClose size={28}/>
                 {/* tooltip */}
-                <span
-                    className='absolute pr-8 right-0 hidden group-hover:flex'
-                >
-                    <span
-                        className='bg-slate-100 relative flex text-slate-600 px-3 py-2 items-center rounded-md shadow-md'
-                    >
+                <span className='absolute pr-8 right-0 hidden group-hover:flex'>
+                    <span className='bg-slate-100 relative flex text-slate-600 px-3 py-2 items-center rounded-md shadow-md'>
                         Close
+                        {/* triangle */}
+                        <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
                 </span>
             </span>
