@@ -30,6 +30,7 @@ const NavItem: React.FC<NavItemProps> = ({
             px-2
             py-1
             text-slate-600
+            focus:outline-none
             `, 
             active && `bg-slate-200`, 
             active && `text-pink-700`,
