@@ -39,7 +39,10 @@ const LoginModal: React.FC<ModalProps> = ({
             justify-center
             bg-slate-50
             p-8
-            min-w-[450px]
+            w-[86%]
+            backdrop:blur-md
+            md:w-[73%]
+            lg:w-[41%]
             rounded-md
             absolute
             "
