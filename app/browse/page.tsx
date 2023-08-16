@@ -17,15 +17,17 @@ export default async function Browse() {
   const { data } = await supabase.from('Foods').select()
 
 	if (!session) {
-		redirect('/unauthenticated')
+		redirect('/login')
 	}
 
   return (
       <Suspense fallback={<Loading />}>
+        <section className='flex flex-col w-full h-full bg-slate-300'>
             <h1>Hello, {session.user.email}</h1>
 						<span className='text-slate-600'>
               <FoodList data={data ?? []}/>
             </span>
+        </section>
       </Suspense>
     )
 }

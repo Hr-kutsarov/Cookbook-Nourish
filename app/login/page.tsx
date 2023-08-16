@@ -16,7 +16,7 @@ export default function Login() {
   const authModalHandler = useLoginModal();
 
   return (
-    <section className='bg-slate-200 w-full h-full flex justify-center items-center'>
+    <section className='bg-slate-200 w-full min-h-[92vh] flex justify-center items-center'>
       {/* <div className="flex flex-col w-[400px] p-8 rounded-md gap-2 bg-white shadow-md"> */}
 
         {/* <Link
@@ -61,7 +61,7 @@ export default function Login() {
           magicLink
         />
         </LoginModal>
-        <section className='sm:max-w-lg p-16 flex flex-col gap-4 justify-center rounded-md'>
+        <section className='h-full p-16 flex flex-col gap-4 justify-center rounded-md'>
           <h1 className='text-5xl font-extralight '>You must be logged in to visit this page.</h1>
           <h1 className='text-5xl font-extralight '>Please sign in.</h1>
           

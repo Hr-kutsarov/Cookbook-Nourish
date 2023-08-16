@@ -23,12 +23,13 @@ const CreateFoodModal: React.FC<ModalProps> = ({
     onClose
 }) => {
 
+
     const handler = useCreateFood();
 
     return (
     <AnimatePresence>
     {handler.isOpen && (
-        <section className="flex w-full h-full absolute z-50 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
+        <section className="flex h-full w-full absolute z-50 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
         <motion.div 
         initial={{opacity: 0, x: '-100vh'}}
         animate={{opacity: 1, x: '0'}}
@@ -44,9 +45,10 @@ const CreateFoodModal: React.FC<ModalProps> = ({
             flex-col
             justify-center
             bg-slate-50
-            p-8
-            min-w-[450px]
-            max-w-[60%]
+            p-4
+            w-4/5
+            md:w-3/5
+            lg:w-2/5
             rounded-md
             "
         >
@@ -64,7 +66,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
                 </span>
             </span>
             {children}
-            <h1 className='text-5xl font-extralight'>Create</h1>
+            <h1 className='text-5xl font-extralight mb-4 mr-4'>Create Food Type</h1>
             <FoodItemForm />
         </motion.div>
         </section>

@@ -56,12 +56,6 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
             label: 'Contacts',
             active: pathname === '/contacts',
             href: '/contacts'
-        },
-        {
-            icon: HiMapPin,
-            label: 'Stores',
-            active: pathname === '/stores',
-            href: '/stores'
         }
     ], [pathname])
 

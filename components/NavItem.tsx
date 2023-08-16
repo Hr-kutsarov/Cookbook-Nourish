@@ -36,9 +36,9 @@ const NavItem: React.FC<NavItemProps> = ({
             relative
             `, 
             active && `bg-slate-200`, 
-            active && `text-green-800`,
+            active && `text-teal-800`,
             )}>
-                <Icon size={24}/>
+                <Icon size={28}/>
                 {primary ? <p className='truncate w-100 hidden lg:flex'>{label}</p> : null}
         </Link>
      );

@@ -22,7 +22,7 @@ function LogoutButton({setUser}:{setUser: Dispatch<SetStateAction<string>>}) {
 
   return (
     <button
-      className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-slate-800 to-slate-950 "
+      className="py-2 px-3 rounded-md text-sm text-white bg-gradient-to-b from-green-800 to-teal-900 "
       onClick={signOut}
     >
       Logout
