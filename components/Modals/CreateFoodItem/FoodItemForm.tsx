@@ -3,7 +3,6 @@
 import { useForm, SubmitHandler, useFormContext, Controller } from "react-hook-form"
 import { ZodType, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from "react";
 import WarningRequired from "./WarningRequired";
 import Select  from 'react-select';
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
@@ -11,7 +10,6 @@ import { RxQuestionMarkCircled } from 'react-icons/rx'
 import { twMerge } from "tailwind-merge";
 import { RxDrawingPin,  RxHeart} from 'react-icons/rx'
 import {IoLogoElectron, IoLogoAppleAr, IoLogoBuffer, IoJournalOutline } from 'react-icons/io5'
-import { redirect } from "next/navigation";
 
 import useCreateFood from '@/hooks/createFoodModal'
 

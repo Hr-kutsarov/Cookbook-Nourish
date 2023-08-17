@@ -43,9 +43,9 @@ export default function FoodDetails({data}: {data: Food}) {
     }, [supabase, food, setFood])
 
     return (
-        <div className="flex flex-row gap-4 bg-slate-50 rounded-lg px-5 py-3">
-            <p className="text-slate-300">{food.name}</p>
-            <p className="text-slate-400">{food.fats}</p>
+        <div className="flex flex-row gap-4 h-[40rem] bg-slate-100 mt-[4rem] rounded-lg px-5 py-3">
+            <p className="text-slate-800">{food.name}</p>
+            <p className="text-slate-800">{food.fats}</p>
             <button className='text-pink-600' onClick={handleEdit}>Edit</button>
             <button className="text-red-700" onClick={handleDelete}>Delete</button>
         </div>

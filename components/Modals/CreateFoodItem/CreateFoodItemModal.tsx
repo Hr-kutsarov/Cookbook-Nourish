@@ -29,7 +29,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
     return (
     <AnimatePresence>
     {handler.isOpen && (
-        <section className="flex h-full w-full absolute z-50 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
+        <section className="flex h-full w-full absolute z-99 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
         <motion.div 
         initial={{opacity: 0, x: '-100vh'}}
         animate={{opacity: 1, x: '0'}}

@@ -32,7 +32,7 @@ export const FoodsObjFormSchema = z.object({
     value: z.string(),
     label: z.string(),
     })).nonempty({ message: "Expands a different dimension." }),
-
+  price: z.number().positive()
 });
 
 export type FoodsFormSchema = z.infer<typeof FoodsObjFormSchema>;

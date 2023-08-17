@@ -22,12 +22,13 @@ export default async function Browse() {
 
   return (
       <Suspense fallback={<Loading />}>
-        <section className='flex flex-col w-full h-full bg-slate-300'>
-            <h1>Hello, {session.user.email}</h1>
-						<span className='text-slate-600'>
+        <span className='flex flex-col w-full h-auto bg-slate-300'>
+            <section className='flex md:hidden bg-slate-50 min-h-[2rem] mt-[4.25rem] fixed w-auto p-2 rounded-b-md'>
+            <h1 className='text-slate-400 font-semibold text-sm'>Hello, {session.user.email}</h1>
+            </section>
+            <span className='bg-slate-300 flex w-full h-200px'>asd</span>
               <FoodList data={data ?? []}/>
-            </span>
-        </section>
+        </span>
       </Suspense>
     )
 }

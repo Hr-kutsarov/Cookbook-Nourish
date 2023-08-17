@@ -6,13 +6,13 @@ import Image from 'next/image'
 // This hook 
 // import useSideMenu from '@/hooks/sideMenu'
 import { twMerge } from 'tailwind-merge';
-import logo from '../app/g1.png'
+import logo from '@/app/logo.svg'
 
 const Header: React.FC = () => {
     // const toggler = useSideMenu();
 
     return (
-        <header className="flex flex-row items-center h-[4.25rem] w-full justify-between bg-slate-200 overflow-hidden shadow-sm z-99 relative">
+        <header className="flex flex-row items-center h-[4.25rem] w-full justify-between bg-slate-50/90 backdrop-blur-sm overflow-hidden shadow-sm z-99 fixed">
             <span className='flex flex-row items-center ml-4'>
                 {/* might use this again */}
                 {/* <button onClick={ toggler.isOpen ? toggler.onClose : toggler.onOpen } className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50`, `${toggler.isOpen && `text-rose-800`}`)}>

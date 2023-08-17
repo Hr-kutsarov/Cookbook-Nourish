@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+import image from './app/test.webp'
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -16,6 +18,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'pattern': "url('./app/test.webp')",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
