@@ -149,33 +149,38 @@ const FoodItemForm: React.FC = () => {
           onSubmit={handleSubmit(onSubmit)}>
 
             <span className={valueInputsWrapperClassnames} >
-            {errors.name && <WarningRequired  message={errors.name.message}/>}
+            {errors.name && <WarningRequired  isPrimary message={errors.name.message}/>}
             <span className="absolute ratio-square p-3 text-slate-500 bg-transparent"><RxDrawingPin size={18}/></span>
             <input className={valueInputsClassnames} type="text" placeholder="Name" {...register("name")} />
             </span>
 
+            <span className="grid grid-cols-2 gap-1">
             <span className={valueInputsWrapperClassnames} >
-            {errors.calories && <WarningRequired message={errors.calories.message}/>}
+            {errors.calories && <WarningRequired isPrimary message={errors.calories.message}/>}
             <span className="absolute ratio-square p-3 text-slate-500 bg-transparent"><RxHeart size={18}/></span>
             <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Calories" {...register("calories", {valueAsNumber: true})} />
             </span>
-
+            
+            
             <span className={valueInputsWrapperClassnames} >
-            {errors.proteins && <WarningRequired  message={errors.proteins.message}/>}
+            {errors.proteins && <WarningRequired isPrimary message={errors.proteins.message}/>}
             <span className="absolute ratio-square p-3 bg-transparent text-slate-500"><IoLogoAppleAr size={18}/></span>
             <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Proteins" {...register("proteins", {valueAsNumber: true})} />
             </span>
+            
 
             <span className={valueInputsWrapperClassnames} >
-            {errors.fats && <WarningRequired  message={errors.fats.message}/>}
+            {errors.fats && <WarningRequired isPrimary message={errors.fats.message}/>}
             <span className="absolute ratio-square p-3 bg-transparent text-slate-500"><IoLogoBuffer size={18}/></span>
             <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Fats" {...register("fats", {valueAsNumber: true})} />
             </span>
+            
 
             <span className={valueInputsWrapperClassnames} >
-            {errors.carbs && <WarningRequired  message={errors.carbs.message}/>}
+            {errors.carbs && <WarningRequired isPrimary message={errors.carbs.message}/>}
             <span className="absolute ratio-square p-3 bg-transparent text-slate-500"><IoLogoElectron size={18}/></span>
             <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Carbs" {...register("carbs", {valueAsNumber: true})} />
+            </span>
             </span>
 
             <span className={labelWrapperClassNames}>
@@ -238,7 +243,7 @@ const FoodItemForm: React.FC = () => {
               <span className={hintHoverableButtonClassnames}>
                 <RxQuestionMarkCircled size={24}/>
                 <span className={hiddenInfoClasses}>
-                  Info stuff 
+                  Weight and seasons often go hand in hand, as we crave lightness in summer and heavier dishes when temperatures fall. Understanding the wine's body, or weight is the key factor in  pairing wine with food.
                 </span>
               </span>
             </div>
@@ -265,8 +270,10 @@ const FoodItemForm: React.FC = () => {
               <span className={hintHoverableButtonClassnames}>
                 <RxQuestionMarkCircled size={24}/>
                 <span className={hiddenInfoClasses}>
-                  You need to be aware of an ingredient's volume whenever combining it with other ingredients. If a dish is overspiced to the point where you can not taste its essence it's wrong.
-                </span>
+                 One important aspect of an ingredient's flavor essence is its "volume." Think of stereo dial with "1" indicating a "quiet" 
+                 seasoning of chopped parsley, and "10" suggesting a "loud" mound of freshly chopped habanero chile peppers. You'll use them 
+                 very differently to create very different effects, while striving to achieve the same all-important balance in the final dish.
+                 </span>
               </span>
             </div>
             <Controller 
@@ -292,7 +299,12 @@ const FoodItemForm: React.FC = () => {
               <span className={hintHoverableButtonClassnames}>
                 <RxQuestionMarkCircled size={24}/>
                 <span className={hiddenInfoClasses}>
-                  Info stuff 
+                  Different tastes serve different functions. Saltiness stimulates thirst, 
+                  while sourness quenches it. Saltiness heightens the appetite, which is why it is so 
+                  effective in appetizers. Bitterness also stimulates the appetite, an can promote the 
+                  other tastes with which it is paired while adding a note of lightness to a dish. 
+                  Sourness is refreshing, and adds a fresh note to any dish to which it is added. 
+                  Sweetness is famously satiating.
                 </span>
                 </span>
               </div>
@@ -310,11 +322,10 @@ const FoodItemForm: React.FC = () => {
             />
 
             <span className={twMerge(valueInputsWrapperClassnames, 'mt-4')} >
-            {errors.price && <WarningRequired  message={errors.price.message}/>}
-            <span className="absolute ratio-square p-3 bg-transparent text-slate-500"><IoJournalOutline size={18}/></span>
-            <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Price per kg" {...register("price", {valueAsNumber: true})} />
-            </span>
-
+            {errors.price && <WarningRequired isPrimary message={errors.price.message}/>}
+              <span className="absolute ratio-square p-3 bg-transparent text-slate-500"><IoJournalOutline size={18}/></span>
+                <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Price per kg" {...register("price", {valueAsNumber: true})} />
+              </span>
              </span>
             <input className="rounded-md shadow-md text-green-50 hover:text-green-100 py-3 font-bold bg-teal-900 hover:bg-teal-600 hover:shadow-lg cursor-pointer mt-4 " type="submit" />
         </form>

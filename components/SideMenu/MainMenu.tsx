@@ -50,7 +50,7 @@ const MainMenu: React.FC = ({}) => {
         >
             <button 
             onClick={ menuToggler.isOpen ? menuToggler.onClose : menuToggler.onOpen } 
-            className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50 rounded-b-full rounded-t-full bg-white/30 hover:text-green-600`, menuToggler.isOpen && 'rounded-t-none', menuToggler.isOpen && 'shadow-xl')}
+            className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50 rounded-b-full rounded-t-full bg-white/30 hover:text-green-800`, menuToggler.isOpen && 'rounded-t-none shadow-xl text-green-600')}
             >
                 {menuToggler.isOpen ? <HiMenu size={28}/> : <RxChevronUp size={28}/>}
             </button>

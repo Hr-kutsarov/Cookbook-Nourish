@@ -66,7 +66,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
                 </span>
             </span>
             {children}
-            <h1 className='text-5xl font-extralight mb-4 mr-4'>Create Food Type</h1>
+            <h1 className='text-5xl font-extralight mb-8 mr-4'>Create Food Type</h1>
             <FoodItemForm />
         </motion.div>
         </section>
