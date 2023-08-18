@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
+
 import { Food } from "@/app/types/FoodTypes"
+import { motion, AnimatePresence } from "framer-motion"
 // new router!!
 import { useRouter } from "next/navigation"
 import FoodItem from "./FoodItem"
@@ -10,12 +11,15 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { twMerge } from "tailwind-merge"
 import useCreateFood from "@/hooks/createFoodModal"
 import HeadingFoodList from './HeadingFoodList'
+import useSideMenuHook from '@/hooks/sideMenu'
 
 export default function FoodList({data}: {data: Food[]}) {
     // const [foods, setFoods] = useState(data)
     const router = useRouter()
     const supabase = createClientComponentClient();
     const createFormHandler = useCreateFood()
+    const handlerSideMenu = useSideMenuHook();
+    
 
     useEffect(() => {
         // supabase will /watch this channel
@@ -34,16 +38,26 @@ export default function FoodList({data}: {data: Food[]}) {
         }, [])
 
     return (
-        <section className="bg-slate-300 flex flex-col min-h-[90vh] p-2 mt-[4rem] lg:ml-4 mr-4 md:mr-4">
+            <section className={twMerge('bg-slate-300 flex flex-col min-h-[96vh] p-2 gap-2 mt-[4rem] w-full max-w-[94%]', handlerSideMenu.isOpen && 'max-w-[75%]')}>
             <HeadingFoodList />
-            {data?.map((f) => (
-            <span 
-            className="bg-slate-50 relative h-auto w-full flex flex-col items-between max-w-[92%] px-5 py-3 rounded-md shadow-lg"
-            key={f.id}>
-                <FoodItem key={f.id} item={f}/>
-                <Link className='absolute bottom-2 left-40 bg-gradient-to-r from-slate-100 to-slate-200 h-auto p-2 rounded-lg' href={`/browse/${f.id}`}>Details</Link>
-            </span>
-        ))}
+            <AnimatePresence>
+                <motion.div 
+                initial={{opacity: 0, y: '150vh'}}
+                animate={{opacity: 1, y: '0'}}
+                exit={{opacity: 0, y: '150vh'}}
+                transition={{
+                    duration: 0.4,
+                    type: "spring",
+                    bounce: 0.15,
+                    delay: 0.1
+                }}
+                className={twMerge("bg-slate-50 h-auto w-full flex flex-col items-between p-1 rounded-md shadow-lg", createFormHandler.isOpen && '-z-40')}
+                >
+                    {data?.map((f) => <FoodItem key={f.id} item={f}/>)}
+            </motion.div>
+        
+
+            </AnimatePresence>
         </section>
     )
 }

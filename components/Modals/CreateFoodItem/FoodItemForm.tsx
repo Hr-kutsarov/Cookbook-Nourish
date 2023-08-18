@@ -315,6 +315,7 @@ const FoodItemForm: React.FC = () => {
                 { value: "heating", label: "Heating" },
                 { value: "warming", label: "Warming" },
                 { value: "cooling", label: "Cooling" },
+                { value: "none", label: "Not mentioned" },
               ]} 
             />}
             />
@@ -325,6 +326,8 @@ const FoodItemForm: React.FC = () => {
                 <input className={valueInputsClassnames} type="number" step="0.01" placeholder="Price per kg" {...register("price", {valueAsNumber: true})} />
               </span>
              </span>
+
+
             <input className="rounded-md shadow-md text-green-50 hover:text-green-100 py-3 font-bold bg-teal-900 hover:bg-teal-600 hover:shadow-lg cursor-pointer mt-4 " type="submit" />
         </form>
     )

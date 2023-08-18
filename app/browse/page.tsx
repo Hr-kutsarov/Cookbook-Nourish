@@ -26,7 +26,6 @@ export default async function Browse() {
             <section className='flex md:hidden bg-slate-50 min-h-[2rem] mt-[4.25rem] fixed w-auto p-2 rounded-b-md'>
             <h1 className='text-slate-400 font-semibold text-sm'>Hello, {session.user.email}</h1>
             </section>
-            <span className='bg-slate-300 flex w-full h-200px'>asd</span>
               <FoodList data={data ?? []}/>
         </span>
       </Suspense>

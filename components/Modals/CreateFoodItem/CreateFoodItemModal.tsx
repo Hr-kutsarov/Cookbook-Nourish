@@ -7,6 +7,9 @@ import FoodItemForm from './FoodItemForm';
 import useSideMenu from '@/hooks/sideMenu';
 import { useEffect } from 'react';
 
+
+
+
 interface ModalProps {
     isOpen?: boolean;
     onSubmit?: () => void;
@@ -35,10 +38,10 @@ const CreateFoodModal: React.FC<ModalProps> = ({
         animate={{opacity: 1, x: '0'}}
         exit={{opacity: 0, x: '-100vh'}}
         transition={{
-            duration: 0.4,
+            duration: 0.3,
             type: "spring",
             bounce: 0.15,
-            delay: 0.2
+            delay: 0.1
         }}
         className="
             flex 

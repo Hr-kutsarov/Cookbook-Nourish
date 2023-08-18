@@ -1,12 +1,18 @@
 import { Food } from "@/app/types/FoodTypes"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+import { IoMusicalNote } from "react-icons/io5";
 
 
 import { RxSun, } from 'react-icons/rx'
-import { LuCloudSunRain, LuClover, LuSnowflake, LuPower, LuOrbit, LuSalad } from 'react-icons/lu'
-import {FaCheese} from 'react-icons/fa'
+import { LuCloudSunRain, LuClover, LuSnowflake } from 'react-icons/lu'
+import {FaCheese, FaHamburger, FaKiwiBird, FaLeaf, FaCircle, FaExclamation, FaBullseye, FaLemon} from 'react-icons/fa'
 import { twMerge } from "tailwind-merge"
 import useCreateFood from "@/hooks/createFoodModal"
+import useSideMenu from "@/hooks/sideMenu"
+import { MdIcecream } from 'react-icons/md'
+import { PiOrangeSliceFill } from 'react-icons/pi'
+import { TbSalt, Tb360 } from 'react-icons/tb'
 
 
 export default function FoodItem({item}: {item: Food}) {
@@ -21,21 +27,23 @@ export default function FoodItem({item}: {item: Food}) {
         router.refresh()
     }
 
+    const handlerSideMenu = useSideMenu();
     const createFormHandler = useCreateFood();
 
-    const innerSectionStyles = "flex flex-row justify-between items-center px-2 py-1";
-    const bottomInnerContainerStyles = twMerge("grid grid-cols-2 w-full justify-center items-center relative")
+    const innerSectionStyles = "flex flex-row justify-between items-center px-3 py-1 gap-2";
+    const bottomInnerContainerStyles = twMerge("flex flex-row w-full h-full wrap")
     
 
     return (
-        <div className={twMerge('grid grid-cols-2 items-center min-h-[2.25rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 ' )}>
+        <>
+        <div className={twMerge('grid grid-cols-2 items-center min-h-[1.5rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 ' )}>
             
-            {/* THE GREAT UNIFIER HAHA */}
+            {/* THE GREAT UNIFIER SPAN ALMIGHTY */}
             <span className="grid grid-cols-2">
                 
                 <span className="flex h-full flex-row justify-between p-2">
-                    <p className="text-lg">{item.name}</p>
-                    <span className="relative bg-teal-900 flex items-center justify-center border-1 rounded-[100%] aspect-square h-[3rem]" >
+                    <p className="text-lg pl-4">{item.name}</p>
+                    <span className="relative bg-gradient-to-br from-green-800 to-teal-950 border-2 border-slate-300 flex items-center justify-center border-1 rounded-[100%] aspect-square h-[3rem]" >
                     <p className="text-teal-50">34%</p>
                 </span>
                 </span>
@@ -57,35 +65,36 @@ export default function FoodItem({item}: {item: Food}) {
                 <section className="grid grid-cols-4 h-full">
                     {/* CALORIES */}
                     <span className={innerSectionStyles}>
-                        <p className="relative">.</p>
-                        <p className="relative flex flex-col items-end">
-                            {item.calories}
+                        <p className="relative flex flex-col ">
+                            {item.calories.toFixed(2)}
                         </p>
+                        {!handlerSideMenu.isOpen ? <p className="relative"><FaHamburger /></p> : null}
+
                     </span>
 
                     {/* PROTEINS */}
                     <span className={innerSectionStyles}>
-                        <p className="relative">3%</p>
-                        <p className="relative flex flex-col items-end">
-                            {item.proteins}
+                    <p className="relative flex flex-col items-end">
+                            {item.proteins.toFixed(2)}
                         </p>
+                        {!handlerSideMenu.isOpen ? <p className="relative"><FaKiwiBird /></p> : null}
                     </span>
 
 
                     {/* CARBS */}
                     <span className={innerSectionStyles}>
-                        <p className="relative">14%</p>
                         <p className="relative flex flex-col items-end">
-                            {item.carbs}
+                            {item.carbs.toFixed(2)}
                         </p>
+                        {!handlerSideMenu.isOpen ? <p className="relative"><FaLeaf /></p> : null}
                     </span>
 
                     {/* FATS */}
                     <span className={innerSectionStyles}>
-                        <p className="relative">20%</p>
-                        <p className="relative flex flex-col items-end">
-                            {item.fats}
+                    <p className="relative flex flex-col items-end">
+                            {item.fats.toFixed(2)}
                         </p>
+                        {!handlerSideMenu.isOpen ? <p className="relative"><FaCheese /></p> : null}
                     </span>
                 </section>
 
@@ -97,24 +106,93 @@ export default function FoodItem({item}: {item: Food}) {
                 {/* Weight */}
                 <span className={innerSectionStyles}>
                     {/* <p className="relative">Weight:</p> */}
-                    <p className="relative flex w-full justify-center">
-                        {item.weight === 'light' ? <span>Light</span> : null}
-                        {item.weight === 'lightMedium' ? <span>Medium Light</span> : null}
-                        {item.weight === 'medium' ? <span>Medium</span> : null}
-                        {item.weight === 'mediumHeavy' ? <span>Medium Heavy</span> : null}
-                        {item.weight === 'heavy' ? <span>Heavy</span> : null}
+                    <p className="relative flex w-full justify-between items-center">
+                        {item.weight === 'light' ? <span className={twMerge("flex text-center items-center gap-1", 'group relative')}>
+                            <span><FaCircle size={16}/></span>
+                            <span className="text-slate-300"><FaCircle size={12}/></span>
+                            <span className="text-slate-300"><FaCircle size={16}/></span>
+                            <span className="text-slate-300"><FaCircle size={12}/></span>
+                            <span className="text-slate-300"><FaCircle size={16}/></span>
+                            <span className="hidden absolute group-hover:flex p-2 w-full justify-center bg-slate-50 shadow-md rounded-md">Light</span>
+                        </span> : null}
+                        {item.weight === 'lightMedium' ? 
+                            <span className={twMerge("flex text-center items-center gap-1", 'group relative')}>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span className="text-slate-300"><FaCircle size={16}/></span>
+                                <span className="text-slate-300"><FaCircle size={12}/></span>
+                                <span className="text-slate-300"><FaCircle size={16}/></span>
+                                <span className="hidden absolute group-hover:flex p-2 w-full justify-center bg-slate-50 shadow-md rounded-md">Light-Medium</span>
+                            </span>
+                             : null}
+                        {item.weight === 'medium' ? 
+                            <span className={twMerge("flex text-center items-center gap-1", 'group relative')}>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span><FaCircle size={16}/></span>
+                                <span className="text-slate-300"><FaCircle size={12}/></span>
+                                <span className="text-slate-300"><FaCircle size={16}/></span>
+                                <span className="hidden absolute group-hover:flex p-2 w-full justify-center bg-slate-50 shadow-md rounded-md">Medium</span>
+                            </span>
+                             : null}
+                        {item.weight === 'mediumHeavy' ? 
+                            <span className={twMerge("flex text-center items-center gap-1", 'group relative')}>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span className="text-slate-300"><FaCircle size={16}/></span>
+                                <span className="hidden absolute group-hover:flex p-2 w-full justify-center bg-slate-50 shadow-md rounded-md">Medium-Heavy</span>
+                            </span>
+                        : null}
+                        {item.weight === 'heavy' ? 
+                            <span className={twMerge("flex text-center items-center gap-1", 'group relative')}>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span><FaCircle size={16}/></span>
+                                <span><FaCircle size={12}/></span>
+                                <span><FaCircle size={16}/></span>
+                                <span className="hidden absolute group-hover:flex p-2 w-full justify-center bg-slate-50 shadow-md rounded-md">Heavy</span>
+                            </span>
+                        : null}
                     </p>
                 </span>
+
                 {/* SEASONS */}
                 <span className={innerSectionStyles}>
                     {/* <p className="relative">Seasons:</p> */}
-                    <span className={bottomInnerContainerStyles}>
+                    <span className={twMerge(bottomInnerContainerStyles, ' gap-2')}>
                         {item.seasons.map((i) => (
-                            <p className="p-1 text-center">
-                            {i === 'spring' ? <LuClover size={14} /> : null}
-                            {i === 'summer' ? <RxSun size={14} /> : null}
-                            {i === 'autumn' ? <LuCloudSunRain size={14} /> : null}
-                            {i === 'winter' ? <LuSnowflake size={14} /> : null}
+                            <p className="grid grid-cols-4 w-full items-center ">
+                            {i === 'spring' ? <span>
+                                <span className="group relative w-full items-center">
+                                    <LuClover size={24} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Spring
+                                    </span>
+                                </span>
+
+                            </span>: null}
+                            {i === 'summer' ? 
+                            <span className="group relative w-full items-center">
+                                <RxSun size={24} />
+                                <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                    Summer
+                                </span>
+                            </span> : null}
+                            {i === 'autumn' ? 
+                                <span className="group relative w-full items-center">
+                                    <LuCloudSunRain size={24} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Autumn
+                                    </span>
+                                </span> : null}
+                            {i === 'winter' ? <span className="group relative w-full items-center">
+                                    <LuSnowflake size={24} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Winter
+                                    </span>
+                                </span> : null}
                             </p>
                         ))}
                         <span className="absolute right-12 bottom-2 bg-slate-50 text-slate-600 font-bold rounded-md shadow-md hidden group-hover:flex gap-2 px-4 py-2 flex-col  ">{item.seasons.map(i => (<p>{i}</p>))}</span>
@@ -125,24 +203,108 @@ export default function FoodItem({item}: {item: Food}) {
                 <span className={innerSectionStyles}>
                     {/* Taste: {item.taste.map((i) => (<p>{i}</p>))} */}
                     {/* <p className="relative ">Taste:</p> */}
-                    <span className={bottomInnerContainerStyles}>{item.taste.map((i) => (<p>{i}</p>))}</span>
+                    <span className={bottomInnerContainerStyles}>
+                    {item.taste.map((i) => (
+                            <span className="grid grid-cols-5 justify-center items-center">
+                                {i === 'bitter' ?
+                                <span className="group relative w-full items-center">
+                                    <FaLeaf size={18} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Bitter
+                                    </span>
+                                </span> : null}
+                                {i === 'salty' ?
+                                <span className="group relative w-full items-center">
+                                    <TbSalt size={18} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Salty
+                                    </span>
+                                </span> : null}
+                                {i === 'sour' ?
+                                <span className="group relative w-full items-center">
+                                    <PiOrangeSliceFill size={18} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Sour
+                                    </span>
+                                </span> : null}
+                                {i === 'sweet' ?
+                                <span className="group relative w-full items-center">
+                                    <MdIcecream size={18} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Sweet
+                                    </span>
+                                </span> : null}
+                                {i === 'umami' ?
+                                <span className="group relative w-full items-center">
+                                    <Tb360 size={18} />
+                                    <span className="hidden absolute bottom-8 left-2 group-hover:flex bg-slate-50 rounded-md px-2 py-1 shadow-lg">
+                                        Umami
+                                    </span>
+                                </span> : null}
+                            </span>
+                    ))}
+                    </span>
                 </span>
 
 
                 {/* Volume */}
 
                 <span className={twMerge(bottomInnerContainerStyles, 'items-center relative flex w-full justify-center')}>
-                    {item.volume === 'quiet' ? <span>Quiet</span> : null}
-                    {item.volume === 'quietModerate' ? <span>Quiet-Moderate</span> : null}
-                    {item.volume === 'moderate' ? <span>Moderate</span> : null}
-                    {item.volume === 'moderateLoud' ? <span>Moderate-Loud</span> : null}
-                    {item.volume === 'loud' ? <span>Loud</span> : null}
+                    <p className="relative flex w-full h-full items-center justify-center">
+                    {item.volume === 'quiet' ?  <span className="flex justify-center w-full h-full items-center relative group">
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="hidden absolute left-41% group-hover:flex p-2 bg-slate-50 shadow-md rounded-md">Quiet</span>
+                    </span> : null}
+                    {item.volume === 'quietModerate' ?  <span className="flex justify-center w-full h-full items-center relative group">
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md text-center">Quiet-Moderate</span>
+                    </span> : null}
+                    {item.volume === 'moderate' ?  <span className="flex justify-center w-full h-full items-center relative group">
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600 "><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md">Moderate</span>
+                    </span> : null}
+                    {item.volume === 'moderateLoud' ?  <span className="flex justify-center w-full h-full items-center relative group">
+                        <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                        <span className="text-slate-300"><IoMusicalNote size={16}/></span>
+                        <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md text-center">Moderate-Loud</span>
+                     </span> 
+                     : null}
+                    {item.volume === 'loud' ?  <span className="flex justify-center w-full h-full items-center relative group">
+                    <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                    <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                    <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                    <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                    <span className="text-slate-600"><IoMusicalNote size={20}/></span>
+                    <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md">Loud</span>
+                 </span> 
+                 : null}
+                    </p>
                     </span>
 
                 {/* Functionality */}
                 <span className={innerSectionStyles}>
                 {/* <p className="relative ">Functionality:</p> */}
-                    <span className={twMerge(bottomInnerContainerStyles, 'items-center relative flex w-full justify-center')}>{item.functionality}</span>
+                    <span className={twMerge(bottomInnerContainerStyles, 'items-center relative flex w-full justify-center')}>
+                        {item.functionality === 'warming' ? <span className="text-slate-600"><RxSun size={20}/></span> : null}
+                        {item.functionality === 'cooling' ? <span className="text-slate-600"><LuSnowflake size={20}/></span> : null}
+                        {item.functionality === 'none' ? <span className="text-slate-600"><LuClover size={20}/></span> : null}
+                        {item.functionality === 'heating' ? <span className="text-slate-600"><LuCloudSunRain size={20}/></span> : null}
+                        </span>
                 </span>
 
 
@@ -158,5 +320,7 @@ export default function FoodItem({item}: {item: Food}) {
 
             {/* <button className='text-slate-600' onClick={() => {}}>Edit</button> */}
         </div>
+        <Link className=' text- font-bold text-slate-400 h-auto p-2 rounded-lg' href={`/browse/${item.id}`}>Details</Link>
+        </>
     )
 }
