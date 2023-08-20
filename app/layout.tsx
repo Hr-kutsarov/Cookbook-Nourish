@@ -22,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className='flex flex-col bg-slate-100 w-full h-full'>
+      <body className='flex flex-col bg-slate-100 w-full h-auto'>
         
           {/* <SupabaseProvider> */}
           <Header />

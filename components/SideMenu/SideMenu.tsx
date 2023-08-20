@@ -33,13 +33,13 @@ const SideMenu: React.FC = () => {
                 md:max-w-[240px]
                 mb-4
                 rounded-lg
-                bottom-0
-                min-h-[90vh]
+                min-h-[75vh]
                 shadow-xl
                 flex
                 flex-col
                 items-end
                 justify-between
+                bottom-4
                 `}>
                 
                 <AsideElement />

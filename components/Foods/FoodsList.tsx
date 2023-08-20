@@ -40,7 +40,7 @@ export default function FoodList({data}: {data: Food[]}) {
     return (
             <section className={twMerge('bg-slate-300 flex flex-col min-h-[96vh] p-2 gap-2 mt-[4rem] w-full max-w-[94%]', handlerSideMenu.isOpen && 'max-w-[75%]')}>
             <HeadingFoodList />
-            <AnimatePresence>
+            {/* <AnimatePresence>
                 <motion.div 
                 initial={{opacity: 0, y: '150vh'}}
                 animate={{opacity: 1, y: '0'}}
@@ -54,10 +54,10 @@ export default function FoodList({data}: {data: Food[]}) {
                 className={twMerge("bg-slate-50 h-auto w-full flex flex-col items-between p-1 rounded-md shadow-lg", createFormHandler.isOpen && '-z-40')}
                 >
                     {data?.map((f) => <FoodItem key={f.id} item={f}/>)}
-            </motion.div>
+            </motion.div> */}
         
-
-            </AnimatePresence>
+            {data.map((f) => <FoodItem key={f.id} item={f}/>)}
+            {/* </AnimatePresence> */}
         </section>
     )
 }

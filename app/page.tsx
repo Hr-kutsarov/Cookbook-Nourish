@@ -16,7 +16,7 @@ const Index: React.FC<IndexProps> = async ({children}) => {
   } = await supabase.auth.getUser()
 
   return (
-      <section className='grid m-auto bg-slate-200 w-full h-full items-center justify-center'>
+      <section className='grid m-auto bg-slate-200 w-full h-auto items-center justify-center'>
       <h1
         className='text-5xl font-extralight'
         >

@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     // const toggler = useSideMenu();
 
     return (
-        <header className="flex flex-row items-center h-[4.25rem] w-full justify-between bg-slate-50/90 backdrop-blur-sm overflow-hidden shadow-sm z-99 fixed">
+        <header className="flex flex-row items-center h-[4.25rem] w-full justify-between bg-slate-50/90 backdrop-blur-sm overflow-hidden shadow-sm z-50 absolute">
             <span className='flex flex-row items-center ml-4'>
                 {/* might use this again */}
                 {/* <button onClick={ toggler.isOpen ? toggler.onClose : toggler.onOpen } className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50`, `${toggler.isOpen && `text-rose-800`}`)}>
