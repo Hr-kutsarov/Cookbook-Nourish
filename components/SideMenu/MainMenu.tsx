@@ -2,23 +2,25 @@
 
 
 // import components
-import Navigation from '../NavBox';
+import Navigation from '../Header/NavBox'
+import NavItem from '../Header/NavItem';
 
 // hooks
 import useSideMenu from '@/hooks/sideMenu'
 import useCreateFood from '@/hooks/createFoodModal'
 import MainMenuToggler from '@/hooks/mainMenu'
+import prioritySwitcher from '@/hooks/prioritySwitcher';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 
 // icons
 import { HiMenu } from "react-icons/hi";
-import { RxPencil2, RxChevronUp, RxChevronLeft } from 'react-icons/rx'
+import { RxPencil2, RxChevronUp, RxChevronLeft, RxMixerVertical } from 'react-icons/rx'
 // libs
 
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
-import NavItem from '../NavItem';
+
 
 const MainMenu: React.FC = ({}) => {
 
@@ -27,7 +29,7 @@ const MainMenu: React.FC = ({}) => {
     // maybe if I add routing
     // const pathname = usePathname();
     
-
+    const switcher = prioritySwitcher();
     const toggleFoodForm = useCreateFood();
     const sidemenuToggler = useSideMenu();
     return (
@@ -66,6 +68,18 @@ const MainMenu: React.FC = ({}) => {
                     <RxPencil2 size={24}/>
                     <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
                         New item
+                        <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
+                    </span>
+                </span>
+
+
+                {/* FOOD LIST SWITCHER */}
+                                <span 
+                className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
+                onClick={() => {switcher.priorityState === 'primary' ? switcher.onSecondary() : switcher.onPrimary()}}>
+                    <RxMixerVertical size={24}/>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                        Switch
                         <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
                 </span>
