@@ -12,7 +12,6 @@ const useLoginModal = create<ModalProps>((set) => ({
     isOpen: true,
     onOpen: () => set({ isOpen: true}),
     onClose: () => set({ isOpen: false}),
-    label: 'test'
 }))
 
 export default useLoginModal;
