@@ -113,11 +113,10 @@ const FoodItemForm: React.FC = () => {
         proteins: formData.proteins,
         carbs: formData.carbs,
         fats: formData.fats,
-        // TODO FIX THIS
-                // TODO FIX THIS
-                        // TODO FIX THIS
-        seasons: formData.seasons.map((i) => i.value),
-        taste: formData.taste.map((i) => i.value),
+        // at this point, this can not be anything else than string thanks to Zod and HookForm, 
+        // so I guess declaring the type as ANY here should be fine
+        seasons: formData.seasons.map((i:any) => i.value),
+        taste: formData.taste.map((i:any) => i.value),
         weight: formData.weight.value,
         volume: formData.volume.value,
         functionality: formData.functionality.value,
@@ -128,6 +127,7 @@ const FoodItemForm: React.FC = () => {
         modalHandler.onClose();
       }
 
+      // if error -> TODO implement HOT TOAST
       console.log(data)
     };
 
