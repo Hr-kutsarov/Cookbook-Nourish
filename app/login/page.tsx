@@ -3,7 +3,7 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Suspense } from 'react'
-import Loading from '../browse/loading'
+import Loading from '../loading'
 
  
 import LoginModal from '@/components/Modals/LoginModal'
