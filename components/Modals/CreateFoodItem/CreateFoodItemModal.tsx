@@ -4,12 +4,7 @@ import { IoMdClose } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion';
 import useCreateFood from "@/hooks/createFoodModal";
 import FoodItemForm from './FoodItemForm';
-import useSideMenu from '@/hooks/sideMenu';
-import { useEffect } from 'react';
-
-
-
-
+// keeping these unused props as they are, they might come in handy later
 interface ModalProps {
     isOpen?: boolean;
     onSubmit?: () => void;
