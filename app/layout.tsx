@@ -3,7 +3,6 @@ import './globals.css'
 
 
 // components
-import Header from '@/components/Header'
 import SideMenu from '@/components/SideMenu/SideMenu'
 import CreateFoodModal from '@/components/Modals/CreateFoodItem/CreateFoodItemModal'
 import TransitionClientElement from '@/components/Transition/TransitionClientElement'
@@ -25,8 +24,6 @@ export default function RootLayout({
       <body className='flex flex-col bg-slate-100 w-full h-auto'>
         
           {/* <SupabaseProvider> */}
-          <Header />
-          <CreateFoodModal />
           <MainMenu />
           <SideMenu />
             {children}
