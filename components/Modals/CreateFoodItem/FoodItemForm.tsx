@@ -1,5 +1,6 @@
 'use client'
 
+require('dotenv').config();
 import { useForm, SubmitHandler, useFormContext, Controller } from "react-hook-form"
 import { ZodType, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,7 +10,9 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { RxQuestionMarkCircled } from 'react-icons/rx'
 import { twMerge } from "tailwind-merge";
 import { RxDrawingPin,  RxHeart} from 'react-icons/rx'
-import {IoLogoElectron, IoLogoAppleAr, IoLogoBuffer, IoJournalOutline } from 'react-icons/io5'
+import { IoLogoElectron, IoLogoAppleAr, IoLogoBuffer, IoJournalOutline } from 'react-icons/io5';
+import { useRouter } from 'next/navigation'
+import toast, { Toaster } from 'react-hot-toast';
 
 import useCreateFood from '@/hooks/createFoodModal'
 
@@ -105,7 +108,21 @@ const FoodItemForm: React.FC = () => {
     });
 
     const onSubmit = async (formData: any) => {
+
+
       const supabase = createClientComponentClient()
+
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user) {
+        toast('You are not authenticated')
+        return
+      }
+
+      if (user?.email !== process.env.ADMIN_EMAIL) {
+        toast('Only the admin can create food items.')
+        return
+      }
 
       const {data, error} = await supabase.from('Foods').insert([{
         name: formData.name, 
@@ -139,9 +156,9 @@ const FoodItemForm: React.FC = () => {
     const labelClassnames = 'flex w-full flex-row relative group justify-between items-center';
     const hiddenInfoClasses = 'absolute max-w-[60%] bottom-1 right-10 px-2 py-3 hidden group-hover:flex bg-slate-50 shadow-md text-slate-600 rounded-md text-md font-semibold'
 
-
     return (
         /* "handleSubmit" will inputs before invoking "onSubmit" */
+        <><Toaster />
         <form 
           className={valueInputsWrapperClassnames} 
           onSubmit={handleSubmit(onSubmit)}>
@@ -330,6 +347,7 @@ const FoodItemForm: React.FC = () => {
 
             <input className="rounded-md shadow-md text-green-50 hover:text-green-100 py-3 font-bold bg-teal-900 hover:bg-teal-600 hover:shadow-lg cursor-pointer mt-4 " type="submit" />
         </form>
+      </>
     )
 }
 
