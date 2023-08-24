@@ -6,7 +6,7 @@ import Link from 'next/link'
 import LogoutButton from './LogoutButton'
 import useLoginModal from '@/hooks/authModal'
 import { useRouter } from 'next/navigation'
-import Loading from '@/app/loading'
+import Loading from '@/components/Loaders/loading'
 
 const NavAuth: React.FC = () => {
     const supabase = createClientComponentClient();

@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 import FoodItem from "./FoodItem"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { twMerge } from "tailwind-merge"
-import Loading from "@/app/loading"
+import Loading from "@/components/Loaders/loading"
 
 export default function FoodList({data}: {data: Food[]}) {
     // const [foods, setFoods] = useState(data)
