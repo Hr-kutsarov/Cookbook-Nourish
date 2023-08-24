@@ -38,9 +38,4 @@ export default async function Browse() {
     </section>
     )
 
-
-
-
-
-
 }
