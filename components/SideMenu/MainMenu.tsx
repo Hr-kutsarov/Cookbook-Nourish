@@ -10,27 +10,24 @@ import useSideMenu from '@/hooks/sideMenu'
 import useCreateFood from '@/hooks/createFoodModal'
 import MainMenuToggler from '@/hooks/mainMenu'
 import prioritySwitcher from '@/hooks/prioritySwitcher';
-import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
+
 
 // icons
-import { HiMenu } from "react-icons/hi";
+import { HiMenu, HiHome } from "react-icons/hi";
 import { RxPencil2, RxChevronUp, RxChevronLeft, RxMixerVertical } from 'react-icons/rx'
+
 // libs
 
 import { twMerge } from 'tailwind-merge';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 
 const MainMenu: React.FC = ({}) => {
 
     const menuToggler = MainMenuToggler()
-
-    // maybe if I add routing
-    // const pathname = usePathname();
     
     const switcher = prioritySwitcher();
-    const toggleFoodForm = useCreateFood();
     const sidemenuToggler = useSideMenu();
     return (
         <nav
@@ -61,20 +58,8 @@ const MainMenu: React.FC = ({}) => {
                 
                 {/* USING FLEX-REVERSE! */}
                 
-                {/* OPEN CREATE FOOD MODAL */}
-                <span 
-                className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
-                onClick={() => {toggleFoodForm.isOpen ? toggleFoodForm.onClose() : toggleFoodForm.onOpen()}}>
-                    <RxPencil2 size={24}/>
-                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
-                        New item
-                        <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
-                    </span>
-                </span>
-
-
                 {/* FOOD LIST SWITCHER */}
-                                <span 
+                <span 
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 onClick={() => {switcher.priorityState === 'primary' ? switcher.onSecondary() : switcher.onPrimary()}}>
                     <RxMixerVertical size={24}/>
@@ -95,6 +80,29 @@ const MainMenu: React.FC = ({}) => {
                         <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
                     </span>
                 </span>
+
+                {/* OPEN CREATE FOOD MODAL */}
+                <Link 
+                className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
+                href='/add-food'>
+                    <RxPencil2 size={24}/>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                        New item
+                        <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
+                    </span>
+                </Link>
+
+                {/* NAV TO HOMEPAGE */}
+                <Link 
+                className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
+                href='/'
+                >
+                    <HiHome size={24}/>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                        Home
+                        <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
+                    </span>
+                </Link>
             </div>
         </nav>
     )
