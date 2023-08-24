@@ -46,7 +46,7 @@ const NavItem: React.FC<NavItemProps> = ({
             active && `pr-3`
             )}>
                 <Icon size={28}/>
-                {primary ? <p className='truncate w-100 hidden lg:flex'>{label}</p> : null}
+                {primary ? <p className='truncate w-100 hidden tracking-wide lg:flex'>{label}</p> : null}
         </Link>
      );
 }
