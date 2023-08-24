@@ -4,7 +4,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import FoodDetails from '@/components/Foods/FoodDetails'
 import { Suspense } from "react";
-import Loading from "@/app/loading";
+import Loading from "@/components/Loaders/loading";
 
 // export async function generateStaticParams() {
 //     const { data: foods } = await supabase.from('Foods').select('id')

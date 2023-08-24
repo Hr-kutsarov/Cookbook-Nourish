@@ -1,5 +1,5 @@
-import Loading from "../loading";
-import { RxQuestionMark } from 'react-icons/rx'
+import Loading from "@/components/Loaders/loading";
+
 import ButtonLoader from "@/components/Loaders/ButtonLoader";
 
 

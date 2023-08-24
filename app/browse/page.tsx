@@ -1,14 +1,13 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { Suspense, useEffect } from 'react';
-import Loading from '../loading';
+import { Suspense } from 'react';
+import Loading from '@/components/Loaders/loading';
 
 // export const dynamic = 'force-dynamic'
 
 import FoodList from "@/components/Foods/FoodsList";
 import Header from '@/components/Header/Header';
-import HeadingFoodList from '@/components/Foods/HeadingFoodList';
 
 export const revalidate = 30;
 
@@ -18,13 +17,14 @@ export default async function Browse() {
 
 	const { data: { session }} = await supabase.auth.getSession()
   const { data } = await supabase.from('Foods').select()
-
+  
 	if (!session) {
 		redirect('/login')
 	}
 
 
   return (
+    
     <section className='flex flex-col w-full'>
     <Header />
     <Suspense fallback={<Loading />}>
@@ -36,6 +36,7 @@ export default async function Browse() {
       </span>
     </Suspense>
     </section>
+    
     )
 
 }
