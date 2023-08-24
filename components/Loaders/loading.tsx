@@ -6,16 +6,13 @@ import { useState } from "react"
 import Link from 'next/link'
 import Image from 'next/image'
 
-import logo from './logo.svg'
+import logo from '@/app/logo.svg'
 
 export default function Loading() {
 
   let [xParam, setXParam] = useState(120)
-  // You can add any UI inside Loading, including a Skeleton.
-
 
   const onClick = () => {
-    console.log('asd')
     setXParam(Math.random()*500 - 140)
   }
 
