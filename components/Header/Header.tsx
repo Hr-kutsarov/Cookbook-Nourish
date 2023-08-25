@@ -7,6 +7,7 @@ import Image from 'next/image'
 // import useSideMenu from '@/hooks/sideMenu'
 import { twMerge } from 'tailwind-merge';
 import logo from '@/app/logo.svg'
+import BookMarkedCounter from './BookmarkedCounter';
 
 const Header: React.FC = () => {
     // const toggler = useSideMenu();
@@ -23,6 +24,7 @@ const Header: React.FC = () => {
                     <p className='hidden md:flex text-slate-600 font-md text-2xl pb-0'>Nourish</p>
                 </span>
             <NavBox />
+            <BookMarkedCounter />
             </span>
             <NavAuth />
         </header>
