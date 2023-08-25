@@ -27,9 +27,6 @@ const NavAuth: React.FC = () => {
 
     return (
         <span className='flex flex-row items-center gap-4 px-3 py-1'>
-        <Suspense fallback={<Loading />}>
-
-        
         {!user ? (            
             <Link
                 onClick={handler.onOpen}
@@ -44,7 +41,6 @@ const NavAuth: React.FC = () => {
                 <LogoutButton setUser={setUser} />
             </span>
         )}
-        </Suspense>
         </span>
     )
 }

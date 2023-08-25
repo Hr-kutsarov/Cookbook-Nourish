@@ -18,6 +18,7 @@ export default async function Browse() {
 	const { data: { session }} = await supabase.auth.getSession()
   const { data } = await supabase.from('Foods').select()
   
+  
 	if (!session) {
 		redirect('/login')
 	}
@@ -27,14 +28,12 @@ export default async function Browse() {
     
     <section className='flex flex-col w-full'>
     <Header />
-    <Suspense fallback={<Loading />}>
       <span className="pt-[12vh]">
         <section className='flex md:hidden min-h-[2rem] mt-[7vh] fixed w-auto p-2 rounded-b-md'>
           <h1 className='text-slate-400 font-semibold text-sm'>Hello, {session.user.email}</h1>
         </section>
         <FoodList data={data ?? []}/>
       </span>
-    </Suspense>
     </section>
     
     )

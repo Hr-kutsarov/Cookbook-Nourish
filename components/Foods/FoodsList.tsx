@@ -33,7 +33,6 @@ export default function FoodList({data}: {data: Food[]}) {
         }, [])
 
     return (
-        <Suspense fallback={<Loading />}>
             <section className={twMerge('flex flex-col h-full mb-32 gap-2 lg:px-4 md:px-2 sm:px-1')}>
             <AnimatePresence>
                     <motion.div 
@@ -53,7 +52,5 @@ export default function FoodList({data}: {data: Food[]}) {
             </AnimatePresence>
             
             </section>
-        </Suspense>
-
     )
 }
