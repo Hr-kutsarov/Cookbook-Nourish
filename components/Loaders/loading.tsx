@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 import logo from '@/app/logo.svg'
 
-export default function Loading() {
+export default function LoadingComponent() {
 
   let [xParam, setXParam] = useState(120)
 
