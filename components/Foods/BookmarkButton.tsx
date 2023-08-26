@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { Food } from "@/app/types/FoodTypes";
 import bookmarkFoodDataStore from '@/hooks/bookmarkFoodStorage';
 import { Button } from "../ui/button";
-import { RxHeart, RxHeartFilled } from 'react-icons/rx'
+import { RxBookmark, RxBookmarkFilled } from 'react-icons/rx'
 
 interface BookmarkBtnProps {
     item: Food;
@@ -12,24 +12,27 @@ interface BookmarkBtnProps {
 
 const BookmarkButton: React.FC<BookmarkBtnProps> = ({ item }) => {
 
-    const [favourited, setFavourite] = useState<boolean>(false)
-
     const bookmarkHandler = bookmarkFoodDataStore();
     
-    const handleBookmark = () => {
+    const addBookmark = () => {
         bookmarkHandler.setData([...bookmarkHandler.data, item])
     }
 
-    useEffect(() => {
-        const x = bookmarkHandler.data.find((i) => i.id === item.id);
-        if (x) {
-            setFavourite(true)
-        }
-    })
+    const removeBookmark = () => {
+        const data = bookmarkHandler.data.filter((i) => i.id !== item.id)
+        bookmarkHandler.setData(data)
+    }
+
+    const bookmarked = useMemo(() => {
+        return bookmarkHandler.data.find((i) => i.id === item.id)
+    }, [bookmarkHandler])
 
     return (
     <>
-        {!favourited ? <Button variant='link' onClick={() => handleBookmark()}><RxHeart /></Button> : <Button variant='link'><RxHeartFilled /></Button>}
+        {!bookmarked ? 
+        <Button variant='link' onClick={() => addBookmark()}><RxBookmark /></Button> 
+        : 
+        <Button variant='link' onClick={() => removeBookmark()}><RxBookmarkFilled /></Button>}
     </>)
 }
 
