@@ -15,13 +15,13 @@ const buttonVariants = cva(
         outline:
           "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
-          "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+          "text-slate-400 flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-200 hover:text-slate-600 hover:outline-none group dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost: "hidden lg:flex w-auto bg-gradient-to-b from-white to-slate-50 shadow-sm hover:bg-slate-50 text-slate-400 rounded-full hover:shadow-lg hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "max-w-[90%] gap-2 justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-sm transition-all delay-75 duration-100 hover:translate-x-2",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-full px-3",
+        sm: "",
         lg: "h-11 rounded-full px-4",
         icon: "h-16 w-16",
       },
