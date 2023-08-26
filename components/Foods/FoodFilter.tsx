@@ -8,17 +8,21 @@ import { RxSun } from 'react-icons/rx';
 import { TbSalt, Tb360 } from 'react-icons/tb';
 import { PiOrangeSliceFill } from 'react-icons/pi'
 import { MdIcecream } from 'react-icons/md'
-import { RxChevronDown, RxChevronUp, RxMixerHorizontal } from 'react-icons/rx';
-
+import { RxChevronDown, RxChevronUp, RxMixerHorizontal, RxBookmark } from 'react-icons/rx';
+import bookmarkFoodDataStore from '@/hooks/bookmarkFoodStorage';
+import { IoMusicalNote } from "react-icons/io5";
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import FoodDataStore from "@/hooks/foodStore";
+import { Button } from "../ui/button";
 
 const FoodFilter = () => {
 
     const dataStorage = FoodDataStore();
 
-    const supabase = createClientComponentClient()
+    const supabase = createClientComponentClient();
+
+    const bookmarksHandler = bookmarkFoodDataStore();
 
     // GET INITIAL DATA
     const getFoods = async () => {
@@ -212,20 +216,43 @@ const FoodFilter = () => {
         }
       }
   
-  
-    const getVolumeAsc = async () => {
-      const { data } = await supabase.from('Foods').select().order('volume', {ascending: true})
-      if (data) {
-        dataStorage.setData(data)
-        }
-      }
-  
-    const getVolumeDesc = async () => {
-        const { data } = await supabase.from('Foods').select().order('volume', {ascending: false})
+// a=5
+      const getQuiet = async () => {
+        const { data } = await supabase.from('Foods').select().eq('volume', 'quiet')
         if (data) {
           dataStorage.setData(data)
+          }
         }
-    }
+    
+      const getQuietModerate = async () => {
+          const { data } = await supabase.from('Foods').select().eq('volume', 'quietModerate')
+          if (data) {
+            dataStorage.setData(data)
+          }
+      }
+    
+      const getModerate = async () => {
+        const { data } = await supabase.from('Foods').select().eq('volume', 'moderate')
+        if (data) {
+          dataStorage.setData(data)
+          }
+        }
+    
+      const getModerateLoud = async () => {
+          const { data } = await supabase.from('Foods').select().eq('volume', 'moderateLoud')
+          if (data) {
+            dataStorage.setData(data)
+          }
+      }
+    
+      const getLoud = async () => {
+        const { data } = await supabase.from('Foods').select().eq('volume', 'loud')
+        if (data) {
+          dataStorage.setData(data)
+          }
+        }
+  
+
   
     const getFunctionAsc = async () => {
       const { data } = await supabase.from('Foods').select().order('functionality', {ascending: true})
@@ -244,8 +271,8 @@ const FoodFilter = () => {
     const switcher = prioritySwitcher();
 
     const headingStyles = `flex items-center justify-center`;
-    const weightBtnStyles = twMerge('flex p-1 hover:text-slate-400 flex items-center justify-center');
-    const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none`;
+    const weightBtnStyles = twMerge('flex p-1 text-slate-400 hover:text-slate-600 flex items-center justify-center');
+    const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none group`;
     const boxWeightIconsStyles = twMerge('grid grid-cols-5 px-1');
 
     return (
@@ -256,17 +283,28 @@ const FoodFilter = () => {
               <div className={twMerge(headingStyles, 'ml-4')}>
                 <button 
                 onClick={() =>getNamesAsc()} 
-                className='flex aspect-square w-6 items-center justify-center transition-all delay-3 ease-in-out rounded-full'
+                className={buttonStyles}
                 >
-                  <RxChevronDown size={24}/>
+                  <RxChevronUp size={24}/>
                 </button> 
 
                 <button 
                 onClick={() => { getNamesDesc()} } 
                 className={buttonStyles}
                 >
-                  <RxChevronUp size={24}/>
+                  <RxChevronDown size={24}/>
                 </button>
+
+                {bookmarksHandler.data.length > 0 ?
+                  <button 
+                  onClick={() => { bookmarksHandler.setData([])} } 
+                  className={buttonStyles}
+                  >
+                    <RxBookmark size={24}/>
+                    <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md ml-40 mb-4 text-slate-600">Remove Bookmarks</span>
+                  </button>
+                  :
+                  null}
               </div>
             </span>
             <span className="grid grid-cols-2 w-[85%]">
@@ -399,89 +437,105 @@ const FoodFilter = () => {
 
                   {/* SEASON */}
                   <div className={headingStyles}>
-                    <button 
-                    onClick={() =>getSpringFoods()} 
-                    className={buttonStyles}
-                    >
+
+                  <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSpringFoods()}>
                       <LuClover size={20}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getSummerFoods()} } 
-                    className={buttonStyles}
-                    >
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSummerFoods()}>
                       <RxSun size={20}/>
-                    </button>
-                    
-                    <button 
-                    onClick={() => { getAutumnFoods()} } 
-                    className={buttonStyles}
-                    >
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getAutumnFoods()}>
                       <LuCloudSunRain size={20}/>
-                    </button>
-
-                    
-                    <button 
-                    onClick={() => { getWinterFoods()} } 
-                    className={buttonStyles}
-                    >
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getWinterFoods()}>
                       <LuSnowflake size={20}/>
-                    </button>
+                    </Button>
+
                   </div>
 
                   {/* TASTE */}
                   <div className={headingStyles}>
-                    <button 
-                    onClick={() =>getBitterTastingFoods()} 
-                    className={buttonStyles}
-                    >
-                      <FaLeaf size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getSaltyTastingFoods()} } 
-                    className={buttonStyles}
-                    >
-                      <TbSalt size={18}/>
-                    </button>
-
-                    <button 
-                    onClick={() => getSourTastingFoods()} 
-                    className={buttonStyles}
-                    >
-                      <PiOrangeSliceFill size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getUmamiTastingFoods()} } 
-                    className={buttonStyles}
-                    >
-                      <Tb360 size={18}/>
-                    </button>
-
-                    <button 
-                    onClick={() => { getSweetTastingFoods()} } 
-                    className={buttonStyles}
-                    >
-                      <MdIcecream size={18}/>
-                    </button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getBitterTastingFoods()}>
+                      <FaLeaf size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSaltyTastingFoods()}>
+                      <TbSalt size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSourTastingFoods()}>
+                      <PiOrangeSliceFill size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSweetTastingFoods()}>
+                      <MdIcecream size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getUmamiTastingFoods()}>
+                      <Tb360 size={20}/>
+                    </Button>
                   </div>
 
                   {/* FATS */}
                   <div className={headingStyles}>
-                    <button 
-                    onClick={() => getVolumeAsc() } 
-                    className={buttonStyles}
+                  <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getQuiet()}}
                     >
-                      <RxChevronUp size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getVolumeDesc()} } 
-                    className={buttonStyles}
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getQuietModerate()}}
                     >
-                      <RxChevronDown size={18}/>
-                    </button>
+                    <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getModerate()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getModerateLoud()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getLoud()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
                   </div>
 
                   {/* PRICE */}
@@ -639,8 +693,7 @@ const FoodFilter = () => {
                     className={weightBtnStyles}
                     >
                       <FaCircle size={16}/>
-                    </button> 
-
+                    </button>  
                     <button 
                     onClick={() => { getWeightLightMedium()} } 
                     className={weightBtnStyles}
@@ -671,7 +724,31 @@ const FoodFilter = () => {
 
                   {/* SEASON */}
                   <div className={headingStyles}>
-                    <button 
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSpringFoods()}>
+                      <LuClover size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getSummerFoods()}>
+                      <RxSun size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getAutumnFoods()}>
+                      <LuCloudSunRain size={20}/>
+                    </Button>
+                    <Button 
+                      size="sm"
+                      variant='secondary'
+                      onClick={() => getWinterFoods()}>
+                      <LuSnowflake size={20}/>
+                    </Button>
+                    {/* <button 
                     onClick={() =>getSpringFoods()} 
                     className={buttonStyles}
                     >
@@ -698,65 +775,90 @@ const FoodFilter = () => {
                     className={buttonStyles}
                     >
                       <LuSnowflake size={20}/>
-                    </button>
+                    </button> */}
                   </div>
 
                   {/* TASTE */}
                   <div className={headingStyles}>
-                    <button 
-                    onClick={() =>getBitterTastingFoods()} 
-                    className={buttonStyles}
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getBitterTastingFoods()}}
                     >
                       <FaLeaf size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getSaltyTastingFoods()} } 
-                    className={buttonStyles}
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getSaltyTastingFoods()}}
                     >
                       <TbSalt size={18}/>
-                    </button>
-
-                    <button 
-                    onClick={() => getSourTastingFoods()} 
-                    className={buttonStyles}
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getSourTastingFoods()}}
                     >
                       <PiOrangeSliceFill size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getUmamiTastingFoods()} } 
-                    className={buttonStyles}
-                    >
-                      <Tb360 size={18}/>
-                    </button>
-
-                    <button 
-                    onClick={() => { getSweetTastingFoods()} } 
-                    className={buttonStyles}
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getSweetTastingFoods()}}
                     >
                       <MdIcecream size={18}/>
-                    </button>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getUmamiTastingFoods()}}
+                    >
+                      <Tb360 size={18}/>
+                    </Button>
                   </div>
 
-                  {/* FATS */}
+                  {/* VOLUME */}
                   <div className={headingStyles}>
-                    <button 
-                    onClick={() => getVolumeAsc() } 
-                    className={buttonStyles}
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getQuiet()}}
                     >
-                      <RxChevronUp size={18}/>
-                    </button> 
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getQuietModerate()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getModerate()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getModerateLoud()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
+                    <Button 
+                    size='sm'
+                    variant='secondary'
+                    onClick={() => { getLoud()}}
+                    >
+                      <IoMusicalNote size={18}/>
+                    </Button>
 
-                    <button 
-                    onClick={() => { getVolumeDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={18}/>
-                    </button>
+
                   </div>
 
-                  {/* PRICE */}
+                  {/* FUNCTIONALITY */}
                   <div className={headingStyles}>
                     <button 
                     onClick={() => getFunctionAsc() } 
