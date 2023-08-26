@@ -12,7 +12,7 @@ import { LuCloudSunRain, LuClover, LuSnowflake } from 'react-icons/lu'
 import { MdIcecream } from 'react-icons/md'
 import { PiOrangeSliceFill } from 'react-icons/pi'
 import { TbSalt, Tb360 } from 'react-icons/tb'
-import {LuThermometerSnowflake, LuThermometerSun } from 'react-icons/lu'
+import { LuThermometerSnowflake, LuThermometerSun } from 'react-icons/lu'
 import { FaCheese, FaHamburger, FaKiwiBird, FaLeaf, FaCircle, FaHotjar } from 'react-icons/fa'
 
 import { Food } from '@/app/types/FoodTypes'
@@ -23,6 +23,7 @@ import bookmarkFoodDataStore from "@/hooks/bookmarkFoodStorage";
 // components
 import { Button } from "../ui/button";
 import BookmarkButton from "./BookmarkButton";
+import FoodItemXLScreen from "./FoodItemXLScreen";
 
 export default function FoodItem({ item }: {item: Food}) {
     // const router = useRouter()
@@ -36,16 +37,10 @@ export default function FoodItem({ item }: {item: Food}) {
     //     router.refresh()
     // }
 
-
-    const bookmarkStore = bookmarkFoodDataStore()
     const switcher = prioritySwitcher();
     const handlerSideMenu = useSideMenu();
+    const bookmarkStore = bookmarkFoodDataStore()
 
-    const handleBookmark = () => {
-        bookmarkStore.setData([...bookmarkStore.data, item])
-    }
-
-    const weightBtnStyles = ``
     const innerSectionStyles = "flex flex-row  items-center justify-between px-1";
     const macroStyles = "flex flex-row  items-center justify-between px-8 py-1 gap-2";
     const bottomInnerContainerStyles = twMerge("grid gap-1")
@@ -324,7 +319,6 @@ export default function FoodItem({ item }: {item: Food}) {
             </section>
             {/* <button className='text-slate-600' onClick={() => {}}>Edit</button> */}
         </div>
-
         <div 
         className={twMerge('flex items-center min-h-[1.5rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 xl:hidden' )}>
             <span className="flex h-full flex-row justify-between items-center py-2 w-[20%]">
@@ -476,7 +470,7 @@ export default function FoodItem({ item }: {item: Food}) {
                                 <span className={innerSectionStyles}>
                                     <span className={twMerge('flex flex-row w-full items-center justify-center')}>
                                     {item.taste.map((i) => (
-                                        <span className="flex" key={`${item.id}-${item.taste}`}>
+                                        <span className="flex" key={`${item.id}${i}`}>
                                             {i === 'bitter' ?
                                             <span className={twMerge('group relative w-full px-1 items-center')}>
                                                 <FaLeaf size={18} />
@@ -594,10 +588,9 @@ export default function FoodItem({ item }: {item: Food}) {
                 </section>
                 }
         </div>
+
         <span className='flex flex-row'>
             <Link className='h-10 px-4 py-2 font-semibold max-w-[90%] justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-sm transition-all delay-75 duration-100 hover:translate-x-2' href={`/browse/${item.id}`}>Details</Link>
-            <Button variant='link' onClick={() => handleBookmark()}>Bookmark</Button>
-
             {/* save favorites on the server or in local state? 
             + let's not pressure the server and use the local state
             - it's lost on refresh
