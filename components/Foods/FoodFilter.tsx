@@ -279,6 +279,17 @@ const FoodFilter = () => {
         <span className='lg:px-4 md:px-2 sm:px-1 flex bg-gradient-to-r h-[4vh] my-2'>
         <span className='hidden px-1 py-1 text-slate-600 font-semibold rounded-md w-full xl:flex'>
             <span className="flex w-[15%] ">
+              
+            {bookmarksHandler.data.length > 0 ?
+                  <button 
+                  onClick={() => { bookmarksHandler.setData([])} } 
+                  className={twMerge(buttonStyles, 'ml-2')}
+                  >
+                    <RxBookmark size={24}/>
+                    <span className="hidden absolute p-2 group-hover:flex bg-slate-50 shadow-md rounded-md ml-40 mb-4 text-slate-600">Remove Bookmarks</span>
+                  </button>
+                  :
+                  null}
               {/* NAMES */}
               <div className={twMerge(headingStyles, 'ml-4')}>
                 <button 
@@ -295,16 +306,6 @@ const FoodFilter = () => {
                   <RxChevronDown size={24}/>
                 </button>
 
-                {bookmarksHandler.data.length > 0 ?
-                  <button 
-                  onClick={() => { bookmarksHandler.setData([])} } 
-                  className={buttonStyles}
-                  >
-                    <RxBookmark size={24}/>
-                    <span className="hidden absolute group-hover:flex p-2 bg-slate-50 shadow-md rounded-md ml-40 mb-4 text-slate-600">Remove Bookmarks</span>
-                  </button>
-                  :
-                  null}
               </div>
             </span>
             <span className="grid grid-cols-2 w-[85%]">
