@@ -4,7 +4,6 @@
 import FoodList from '@/components/Foods/FoodsList';
 import HeadingFoodList from '@/components/Foods/HeadingFoodList';
 import Header from '@/components/Header/Header';
-import Loading from '@/components/Loaders/loading'
 import FoodFilter from '@/components/Foods/FoodFilter'
 import Bookmarks from '@/components/Bookmarks/Bookmarks';
 
@@ -56,7 +55,8 @@ export default function Search() {
     resolver: zodResolver(schema)
   });
 
-  const switcher = prioritySwitcher()
+  // removed conditional where the menu shrinks as the side menu opens
+  // left on overlap for now
 
   // CREATE QUERY WORKER
   const supabase = createClientComponentClient()
@@ -113,13 +113,15 @@ export default function Search() {
   const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none`
 
   return (
-    <Suspense fallback={<Loading />}>
-    <span className={twMerge('flex flex-col bg-slate-300 min-h-[100vh]', '')}>
+
+    <span className={twMerge('flex flex-col min-h-[100vh]')}>
       <Header />
+      
+      <section className={twMerge('flex flex-col h-auto w-full bg-slate-300')}>
       <span className='mt-[7vh]'>
       <Bookmarks />
       </span>
-      <section className={twMerge('flex flex-col h-auto w-full')}>
+
 
       {/* SEARCH FORM */}
       <>
@@ -134,12 +136,12 @@ export default function Search() {
             {!loadingReset 
             ? 
             <BiSearch 
-            size={24}
-            onClick={() => {
-              getFoods()
-              setLoadingReset(true)
-            }}
-          />
+              size={24}
+              onClick={() => {
+                getFoods()
+                setLoadingReset(true)
+              }}
+            />
           :
           <motion.div
             className={twMerge()}
@@ -192,11 +194,12 @@ export default function Search() {
       <FoodFilter />
 
       {/* Search Results */}
+      
       <FoodList data={dataStorage.data}/>
+
       
     </section>
     
     </span>
-    </Suspense>
   )
 }
