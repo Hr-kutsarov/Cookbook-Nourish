@@ -24,7 +24,7 @@ export default function BookMarkedCounter() {
         <span className='absolute flex items-center justify-center left-4 rounded-full aspect-square p-[0.5rem]'>
             {bookmarkHandler.data.length > 0 ? (<p className='text-sm text-slate-400 font-semibold group-hover:text-slate-600'>{bookmarkHandler.data.length}</p>) : null}
         </span>
-        <span className='flex md:hidden'><RxBookmark /></span>
+        
         </span>
     )
 }
