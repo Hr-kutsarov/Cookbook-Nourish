@@ -1,3 +1,5 @@
+'use client'
+
 import { Food } from "@/app/types/FoodTypes";
 import {
     HoverCard,
@@ -6,10 +8,12 @@ import {
   } from "@/components/ui/hover-card"
 
 import { twMerge } from "tailwind-merge";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "../ui/button";
 import bookmarkFoodDataStore from '@/hooks/bookmarkFoodStorage';
+import { FaHamburger, FaLeaf, FaCheese, FaChess } from "react-icons/fa";
+import { TbMeat } from "react-icons/tb";
+
 
 interface BookmarkedItemTypes {
     item: Food;
@@ -21,54 +25,64 @@ const BookmarkedItem: React.FC<BookmarkedItemTypes> = ({item}) => {
 
     const bookmarkHandler = bookmarkFoodDataStore();
 
-    const data = useMemo(() => {
-        const x = bookmarkHandler.data.find((i) => i.id === item.id);
-        const y = { id: x?.id!, name: x?.name!, calories: x?.calories! * inputValue, proteins: x?.proteins! * inputValue, carbs: x?.carbs! * inputValue, fats: x?.fats! * inputValue, price: x?.price! * inputValue}
-        bookmarkHandler.setCalcData([...bookmarkHandler.calcData, y])
-        return y
-    }, [inputValue])
-
-
-    const triggerStyles = `flex flex-row items-center shadow-md rounded-md bg-gradient-to-b text-slate-500 from-slate-100 to-slate-200 mb-1 px-2 py-1 md:px-4`
+    const triggerStyles = `flex flex-row items-center shadow-lg rounded-md bg-gradient-to-b text-slate-500 from-slate-100 to-slate-200 mb-1 px-2 py-1 md:px-4`
     const hiddenCardContentColsStyles = `grid grid-cols-2 text-sm font-semibold px-2 py-1 rounded-md tracking-wide`
-    const macroStyles = `grid grid-cols-3 p-1 justify-center gap-4`
-    const labelStyles = 'text-sm font-semibold text-slate-400';
-    const valuesStyles = 'text-end font-bold text-sm text-slate-600'
+    const macroStyles = `grid grid-cols-1 md:grid-cols-2 p-1 justify-center gap-4`
+    const labelStyles = twMerge('hidden md:flex text-sm justify-end items-center font-semibold text-slate-400')
+    const valuesStyles = twMerge('text-end font-bold text-sm text-slate-600 flex justify-end items-center', 'lg:pr-[1.5rem]')
+
     return (
     <HoverCard>
         <HoverCardTrigger className={twMerge(triggerStyles)}>
-            <span className={twMerge("flex justify-between flex-row w-[20%] xl:w-[15%]", "px-1")}>
+            <span className={twMerge("flex justify-between flex-row w-[15%]", "px-1")}>
                 <span className="flex text-lg items-center justify-center  text-slate-500  font-semibold">
                     {item.name}
                 </span>
-                <div className="flex w-full max-w-[100px] items-center p-1 gap-1">
+
+            </span>
+            <span className={twMerge("grid grid-cols-6 w-[85%]", 'px-1 items-center')}>
+                <span className={twMerge(macroStyles)}>
+                <p className={twMerge(labelStyles)}><FaHamburger /></p>
+                <p className={twMerge(valuesStyles)}>{Number(item.calories * inputValue).toFixed(2)}</p>
+                
+                </span>
+                <span className={twMerge(macroStyles)}>
+                <p className={twMerge(labelStyles)}><TbMeat /></p>
+                <p className={twMerge(valuesStyles)}>{Number(item.proteins * inputValue).toFixed(2)}</p>
+                
+                </span>
+                <span className={twMerge(macroStyles)}>
+                <p className={twMerge(labelStyles)}><FaLeaf /></p>
+                <p className={twMerge(valuesStyles)}>{Number(item.carbs * inputValue).toFixed(2)}</p>
+                
+                </span>
+                <span className={twMerge(macroStyles)}>
+                <p className={twMerge(labelStyles)}><FaCheese /></p>
+                <p className={twMerge(valuesStyles)}>{Number(item.fats * inputValue).toFixed(2)}</p>
+                
+                </span>
+                <span className={twMerge(macroStyles)}>
+                <p className={twMerge(labelStyles)}>$</p>
+                <p className={twMerge(valuesStyles)}>{Number(item.price * inputValue).toFixed(2)}</p>
+                
+                </span>
+                <div className="flex w-full items-center p-1 gap-1 pl-1 md:pl-4">
                     <Input 
                     type="number" 
                     step="0.01" 
                     onChange={(e) => {
+                        bookmarkHandler.setSumCalories(bookmarkHandler.sumCalories - (item.calories * inputValue) + (item.calories * (Number(e.target.value))));
+                        bookmarkHandler.setSumProteins(bookmarkHandler.sumProteins - (item.proteins * inputValue) + (item.proteins * (Number(e.target.value))))
+                        bookmarkHandler.setSumCarbs(bookmarkHandler.sumCarbs - (item.carbs * inputValue) + (item.carbs * (Number(e.target.value))))
+                        bookmarkHandler.setSumFats(bookmarkHandler.sumFats - (item.fats * inputValue) + (item.fats * (Number(e.target.value))))
+                        bookmarkHandler.setSumPrices(bookmarkHandler.sumPrices - (item.price * inputValue)  + (item.price * (Number(e.target.value))))
+                        bookmarkHandler.setData([...bookmarkHandler.data.filter((i) => i.id !== item.id), {...item, multiplier: (Number(e.target.value))}])
                         setInputValue(Number(e.target.value))
                     }} 
                     value={inputValue}
                     />
-                    <p>kg.</p>
+                    <p className={twMerge(valuesStyles, 'lg:pr-0 pl-2')}>kg.</p>
                 </div>
-            </span>
-            <span className={twMerge("grid grid-cols-5 w-[80%] xl:w-[85%]", 'px-1 ')}>
-                <span className={twMerge(macroStyles)}>
-                <p className={twMerge(valuesStyles)}>{data.calories.toFixed(2)}</p><p>32%</p><p className={twMerge(labelStyles)}>Calories</p>
-                </span>
-                <span className={twMerge(macroStyles)}>
-                <p className={twMerge(valuesStyles)}>{data.proteins.toFixed(2)}</p><p>32%</p><p className={twMerge(labelStyles)}>Proteins</p>
-                </span>
-                <span className={twMerge(macroStyles)}>
-                <p className={twMerge(valuesStyles)}>{data.carbs.toFixed(2)}</p><p>32%</p><p className={twMerge(labelStyles)}>Carbs</p>
-                </span>
-                <span className={twMerge(macroStyles)}>
-                <p className={twMerge(valuesStyles)}>{data.fats.toFixed(2)}</p><p>32%</p><p className={twMerge(labelStyles)}>Fats</p>
-                </span>
-                <span className={twMerge(macroStyles)}>
-                <p className={twMerge(valuesStyles)}>{data.price.toFixed(2)}</p><p>32%</p><p className={twMerge(labelStyles)}>Price</p>
-                </span>
             </span>
             
             {/* bookmarked item */}
