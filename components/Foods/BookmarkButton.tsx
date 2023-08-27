@@ -15,12 +15,34 @@ const BookmarkButton: React.FC<BookmarkBtnProps> = ({ item }) => {
     const bookmarkHandler = bookmarkFoodDataStore();
     
     const addBookmark = () => {
-        bookmarkHandler.setData([...bookmarkHandler.data, item])
+        bookmarkHandler.setData([...bookmarkHandler.data, {...item, multiplier: 1}])
+
+        // increment sum of calories
+        bookmarkHandler.setSumCalories(bookmarkHandler.sumCalories += item.calories)
+        // increment sum of proteins
+        bookmarkHandler.setSumProteins(bookmarkHandler.sumProteins += item.proteins)
+        // increement sum of carbs
+        bookmarkHandler.setSumCarbs(bookmarkHandler.sumCarbs += item.carbs)
+        // increment sum of fats
+        bookmarkHandler.setSumFats(bookmarkHandler.sumFats += item.fats)
+        // incremenet sum of prices
+        bookmarkHandler.setSumPrices(bookmarkHandler.sumPrices += item.price)
     }
 
     const removeBookmark = () => {
-        const data = bookmarkHandler.data.filter((i) => i.id !== item.id)
-        bookmarkHandler.setData(data)
+        const rest = bookmarkHandler.data.filter((i) => i.id !== item.id)
+        bookmarkHandler.setData(rest)
+        const x = bookmarkHandler.data.filter((i) => i.id === item.id)[0];
+        // decrement sum of calories
+        bookmarkHandler.setSumCalories(bookmarkHandler.sumCalories -= x.calories * x.multiplier!)
+        // decrement sum of proteins
+        bookmarkHandler.setSumProteins(bookmarkHandler.sumProteins -= x.proteins * x.multiplier!)
+        // decrement sum of carbs
+        bookmarkHandler.setSumCarbs(bookmarkHandler.sumCarbs -= x.carbs * x.multiplier!)
+        // decrement sum of fats
+        bookmarkHandler.setSumFats(bookmarkHandler.sumFats -= x.fats * x.multiplier!)
+        // decrement sum of prices
+        bookmarkHandler.setSumPrices(bookmarkHandler.sumPrices -= x.price * x.multiplier!)
     }
 
     const bookmarked = useMemo(() => {
@@ -30,9 +52,9 @@ const BookmarkButton: React.FC<BookmarkBtnProps> = ({ item }) => {
     return (
     <>
         {!bookmarked ? 
-        <Button variant='link' onClick={() => addBookmark()}><RxBookmark /></Button> 
+        <Button className='text-teal-600' variant='link' size="lg" onClick={() => addBookmark()}><RxBookmark size={24}/></Button> 
         : 
-        <Button variant='link' onClick={() => removeBookmark()}><RxBookmarkFilled /></Button>}
+        <Button className='text-green-600' variant='link' size="lg" onClick={() => removeBookmark()}><RxBookmarkFilled size={24}/></Button>}
     </>)
 }
 
