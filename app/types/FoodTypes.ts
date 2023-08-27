@@ -11,5 +11,6 @@ export type Food = {
     weight: string,
     volume: string,
     functionality: string,
-    price: number
+    price: number,
+    multiplier?: number
 }
