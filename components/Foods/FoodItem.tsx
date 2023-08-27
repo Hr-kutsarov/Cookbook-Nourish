@@ -11,9 +11,9 @@ import { RxSun, RxValueNone} from 'react-icons/rx'
 import { LuCloudSunRain, LuClover, LuSnowflake } from 'react-icons/lu'
 import { MdIcecream } from 'react-icons/md'
 import { PiOrangeSliceFill } from 'react-icons/pi'
-import { TbSalt, Tb360 } from 'react-icons/tb'
+import { TbSalt, Tb360, TbMeat } from 'react-icons/tb'
 import { LuThermometerSnowflake, LuThermometerSun } from 'react-icons/lu'
-import { FaCheese, FaHamburger, FaKiwiBird, FaLeaf, FaCircle, FaHotjar } from 'react-icons/fa'
+import { FaCheese, FaHamburger, FaLeaf, FaCircle, FaHotjar } from 'react-icons/fa'
 
 import { Food } from '@/app/types/FoodTypes'
 // hooks
@@ -39,7 +39,6 @@ export default function FoodItem({ item }: {item: Food}) {
 
     const switcher = prioritySwitcher();
     const handlerSideMenu = useSideMenu();
-    const bookmarkStore = bookmarkFoodDataStore()
 
     const innerSectionStyles = "flex flex-row  items-center justify-between px-1";
     const macroStyles = "flex flex-row  items-center justify-between px-8 py-1 gap-2";
@@ -49,9 +48,11 @@ export default function FoodItem({ item }: {item: Food}) {
     return (
         <>
         <div 
-        className={twMerge('hidden items-center min-h-[1.5rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 xl:flex' )}>
-            <span className="flex h-full flex-row justify-between items-center py-2 w-[15%]">
-                <p className="text-lg pl-4 font-semibold">{item.name}</p>
+        className={twMerge('hidden items-center min-h-[1.5rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 xl:flex')}>
+            
+            <span className="flex h-full flex-row gap-2 pl-2 items-center py-2 w-[15%]">
+                <BookmarkButton item={item} />
+                <p className="text-lg font-semibold">{item.name}</p>
                 {/* That pie chart component just drags my console into red hot hell. Let's make it simple */}
                 {/* <PieDataComponent key={`${item.id}-pie`} item={item} /> */}
                 
@@ -70,7 +71,7 @@ export default function FoodItem({ item }: {item: Food}) {
                     </span>
                     {/* PROTEINS */}
                     <span className={macroStyles}>
-                    {!handlerSideMenu.isOpen ? <p className="relative"><FaKiwiBird /></p> : null}
+                    {!handlerSideMenu.isOpen ? <p className="relative"><TbMeat /></p> : null}
                     <p className="relative flex">
                         {item.proteins.toFixed(1)}
                     </p>
@@ -321,7 +322,8 @@ export default function FoodItem({ item }: {item: Food}) {
         </div>
         <div 
         className={twMerge('flex items-center min-h-[1.5rem] shadow-lg rounded-md bg-gradient-to-b text-slate-600 from-slate-100 to-slate-200 xl:hidden' )}>
-            <span className="flex h-full flex-row justify-between items-center py-2 w-[20%]">
+            <span className="flex h-full flex-row gap-2 pl-1 items-center py-2 w-[20%]">
+                <BookmarkButton item={item} />
                 <p className="text-lg pl-4 font-semibold">{item.name}</p>
                 {/* That pie chart component just drags my console into red hot hell. There's got to be a better way. */}
                 {/* <PieDataComponent key={`${item.id}-pie`} item={item} /> */}
@@ -340,7 +342,7 @@ export default function FoodItem({ item }: {item: Food}) {
                     </span>
                     {/* PROTEINS */}
                     <span className={macroStyles}>
-                    {!handlerSideMenu.isOpen ? <p className="relative"><FaKiwiBird /></p> : null}
+                    {!handlerSideMenu.isOpen ? <p className="relative"><TbMeat /></p> : null}
                     <p className="relative flex">
                         {item.proteins.toFixed(1)}
                     </p>
@@ -590,12 +592,11 @@ export default function FoodItem({ item }: {item: Food}) {
         </div>
 
         <span className='flex flex-row'>
-            <Link className='h-10 px-4 py-2 font-semibold max-w-[90%] justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-sm transition-all delay-75 duration-100 hover:translate-x-2' href={`/browse/${item.id}`}>Details</Link>
+            <Link className='h-10 ml-8 px-4 py-2 font-semibold max-w-[90%] justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-sm transition-all delay-75 duration-100 hover:translate-x-2' href={`/browse/${item.id}`}>Details</Link>
             {/* save favorites on the server or in local state? 
             + let's not pressure the server and use the local state
             - it's lost on refresh
             */}
-            <BookmarkButton item={item} />
         </span>
 
         </>
