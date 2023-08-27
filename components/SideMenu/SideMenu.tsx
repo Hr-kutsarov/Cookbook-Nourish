@@ -40,6 +40,7 @@ const SideMenu: React.FC = () => {
                 items-end
                 justify-between
                 bottom-4
+                z-50
                 `}>
                 
                 <AsideElement />

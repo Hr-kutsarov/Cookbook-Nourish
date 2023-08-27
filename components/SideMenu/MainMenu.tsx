@@ -44,26 +44,26 @@ const MainMenu: React.FC = ({}) => {
         right-6
         shadow-md
         rounded-full
-        `, 
-        sidemenuToggler.isOpen ? `text-pink-700` : null)}
+        z-50
+        `)}
         >
             <button 
             onClick={ menuToggler.isOpen ? menuToggler.onClose : menuToggler.onOpen } 
-            className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50 rounded-b-full rounded-t-full bg-white/30 hover:text-green-800`, menuToggler.isOpen && 'rounded-t-none shadow-xl text-green-600')}
+            className={twMerge(`flex p-4 text-slate-600 focus:outline-slate-50 rounded-b-full rounded-t-full bg-white hover:text-emerald-700`, menuToggler.isOpen && 'rounded-t-none shadow-xl text-emerald-600')}
             >
                 {menuToggler.isOpen ? <HiMenu size={28}/> : <RxChevronUp size={28}/>}
             </button>
             <div 
-            className={twMerge('flex opacity-0 bg-white/30 rounded-t-full w-full h-0 text-slate-400 flex-col-reverse items-center transition-all ', menuToggler.isOpen && 'opacity-1', menuToggler.isOpen && 'h-auto')}>
+            className={twMerge('z-50 flex opacity-0 bg-white rounded-t-full w-full h-0 text-slate-400 flex-col-reverse items-center transition-all ', menuToggler.isOpen && 'opacity-1', menuToggler.isOpen && 'h-auto')}>
                 
                 {/* USING FLEX-REVERSE! */}
                 
                 {/* FOOD LIST SWITCHER */}
                 <span 
-                className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
+                className="p-4 relative aspect-square w-full group flex hover:text-slate-700 z-50"
                 onClick={() => {switcher.priorityState === 'primary' ? switcher.onSecondary() : switcher.onPrimary()}}>
                     <RxMixerVertical size={24}/>
-                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 p-2 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
                         Switch
                         <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
@@ -75,7 +75,7 @@ const MainMenu: React.FC = ({}) => {
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 onClick={() => {sidemenuToggler.isOpen ? sidemenuToggler.onClose() : sidemenuToggler.onOpen()}}>
                     <RxChevronLeft size={24}/>
-                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 p-2 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
                         Side menu
                         <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
                     </span>
@@ -86,7 +86,7 @@ const MainMenu: React.FC = ({}) => {
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 href='/add-food'>
                     <RxPencil2 size={24}/>
-                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 p-2 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
                         New item
                         <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
@@ -98,7 +98,7 @@ const MainMenu: React.FC = ({}) => {
                 href='/'
                 >
                     <HiHome size={24}/>
-                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 px-2 py-1 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
+                    <span className='absolute mr-20 right-0 hidden group-hover:flex bg-slate-50 text-slate-600 p-2 rounded-md justify-center items-center shadow-md min-w-[6rem]'>
                         Home
                         <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
                     </span>
