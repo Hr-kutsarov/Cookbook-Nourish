@@ -117,10 +117,10 @@ export default function Search() {
     <span className={twMerge('flex flex-col min-h-[100vh]')}>
       <Header />
       
-      <section className={twMerge('flex flex-col h-auto w-full bg-slate-300')}>
-      <span className='mt-[7vh]'>
-      <Bookmarks />
-      </span>
+      <section className={twMerge('flex flex-col h-auto w-full min-h-[100vh] bg-slate-300')}>
+        <span className='mt-[7vh]'>
+        <Bookmarks />
+        </span>
 
 
       {/* SEARCH FORM */}

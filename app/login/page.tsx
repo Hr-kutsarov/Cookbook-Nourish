@@ -48,16 +48,16 @@ export default function Login() {
             variables: {
               default: {
                 colors: {
-                  // text-rose-900
+                  // text-green-600
                   brand: '#0d9488',
-                  // text-rose-700
+                  // text-teal-800
                   brandAccent: '#16a34a', 
                 },
               },
             },
           }}
           
-          providers={['github', 'google', 'facebook']}
+          providers={['github',]}
           magicLink
         />
         </LoginModal>

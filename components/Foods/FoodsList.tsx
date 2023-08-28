@@ -16,6 +16,7 @@ export default function FoodList({data}: {data: Food[]}) {
     const router = useRouter()
     const supabase = createClientComponentClient();
 
+
     useEffect(() => {
         // supabase will /watch this channel
         const channel = supabase.channel('realtime food list').on('postgres_changes', {
@@ -33,7 +34,7 @@ export default function FoodList({data}: {data: Food[]}) {
         }, [])
 
     return (
-            <section className={twMerge('flex flex-col h-full mb-32 gap-2 lg:px-4 md:px-2 sm:px-1')}>
+            <section className={twMerge('flex flex-col h-full mb-32 gap-2 lg:px-4 md:px-2 sm:px-1 w-full', '')}>
             <AnimatePresence>
                     <motion.div 
                     initial={{opacity: 0, y: '30vh'}}

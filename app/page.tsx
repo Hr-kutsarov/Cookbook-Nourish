@@ -2,7 +2,6 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Header from "@/components/Header/Header";
 import Link from "next/link";
-import { motion } from "framer-motion";
 export const dynamic = "force-dynamic";
 
 // interface IndexProps {
