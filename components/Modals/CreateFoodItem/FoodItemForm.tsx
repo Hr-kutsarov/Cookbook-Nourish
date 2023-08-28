@@ -47,8 +47,6 @@ interface FormData {
   price: number;
 }
 
-
-
 const FoodItemForm: React.FC = () => {
 
   const modalHandler = useCreateFood();
@@ -140,12 +138,15 @@ const FoodItemForm: React.FC = () => {
         price: formData.price
       }])
 
-      if (!error) {
-        modalHandler.onClose();
+      if (error) {
+        toast(`Error: ${error.message}`)
       }
 
-      // if error -> TODO implement HOT TOAST
-      console.log(data)
+      if (!error) {
+        modalHandler.onClose();
+        toast('created successfully')
+        return
+      }
     };
 
     const labelWrapperClassNames = 'flex relative flex-col gap-1 w-full group';
@@ -158,7 +159,8 @@ const FoodItemForm: React.FC = () => {
 
     return (
         /* "handleSubmit" will inputs before invoking "onSubmit" */
-        <><Toaster />
+        <>
+        <Toaster />
         <form 
           className={valueInputsWrapperClassnames} 
           onSubmit={handleSubmit(onSubmit)}>
