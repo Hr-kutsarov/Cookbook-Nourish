@@ -29,11 +29,11 @@ const CreateFoodModal: React.FC<ModalProps> = ({
     {handler.isOpen && (
         <section className="flex h-full w-full absolute z-99 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
         <motion.div 
-        initial={{opacity: 0, x: '-100vh'}}
-        animate={{opacity: 1, x: '0'}}
-        exit={{opacity: 0, x: '-100vh'}}
+        initial={{opacity: 0, y: '120vh'}}
+        animate={{opacity: 1, y: '0'}}
+        exit={{opacity: 0, y: '120vh'}}
         transition={{
-            duration: 0.3,
+            duration: 0.6,
             type: "spring",
             bounce: 0.15,
             delay: 0.1
