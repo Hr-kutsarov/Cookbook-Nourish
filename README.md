@@ -49,6 +49,9 @@ Foods have properties and their behavior can be changed with React dynamically. 
 
 - ***DONE*** Displayed food items should be 'bookmarked' and put in a list where their individual weight is changed and their properties such as nutrition value and price are calculated. The user should be able to manipulate only the weight and the values of all macronutrients and price should change. The summed data is displayed in additional field. 
 
+-***TESTING*** E2E with Jest
+
+-***DONE*** Deploy alpha version
+
 - ***NEXT*** Bookmarked data can be saved as a recipe or food log (*depends on the user's idea on how to use the data*)
 
-- ***TBA***
