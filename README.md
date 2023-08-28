@@ -1,10 +1,7 @@
 ## Preview:
-> 
-A little backstory     
+> A little backstory     
 It's 2p.m. and my shift just started. The head chef comes to me and says: "You have to make five types of salad for tomorrow's event. Any ideas?". To which I respond "Yeah I can cotally manage this!". When he leaves I reach for my phone and open the book called The Flavor Bible by Karen Page and Andrew Dornenburg. Then spend more than half an hour looking for whatever I have to find on a pdf file through a free pdf reader.   
-More than two years later I already know how this book should look like as an application.
-
-You have cohlrabi in your hands and you want to make a soup? Search for kohlrabi and find it's flavor affinities.
+More than two years later I already know how this book should look like as an application. You have cohlrabi in your hands and you want to make a soup? Search for kohlrabi and find it's flavor affinities.
 Create a list of the food items you found. Compare their flavor profiles and nutrition. Choose the right one for your dish. See the nutrition and food cost already calculated. Make changes and save your choice as a recipe or a log. Are you calculating the cost for each dish in a hotel or create an exciting menu for your guests this Saturday,  or you're trying to figure out how much 2000 calories actually are?
 
 This app is for the homecook who seeks inspiration.    
@@ -14,6 +11,8 @@ It is for the kitchen chef who wants to calculate recipes.
    It's for those who love to cook and want to surprize their guests next week.
 
 ## Status: In development!
+
+> See the alpha version live here: [here](https://nourish-app.vercel.app/)
 
 This app is created to satisfy the need of browsing several cookbooks at once. You can track your nutrition, calculate your food costs, create recipes, match flavors, discover flavor affinities or simply find what you can cook with all the products that you have at home on Wednesday evening.
 
@@ -49,9 +48,9 @@ Foods have properties and their behavior can be changed with React dynamically. 
 
 - ***DONE*** Displayed food items should be 'bookmarked' and put in a list where their individual weight is changed and their properties such as nutrition value and price are calculated. The user should be able to manipulate only the weight and the values of all macronutrients and price should change. The summed data is displayed in additional field. 
 
--***TESTING*** E2E with Jest
+- ***TESTING*** E2E with Jest
 
--***DONE*** Deploy alpha version
+- ***DONE*** Deploy alpha version
 
 - ***NEXT*** Bookmarked data can be saved as a recipe or food log (*depends on the user's idea on how to use the data*)
 
