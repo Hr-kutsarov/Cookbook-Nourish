@@ -51,7 +51,7 @@ export default function Login() {
                   // text-green-600
                   brand: '#0d9488',
                   // text-teal-800
-                  brandAccent: '#16a34a', 
+                  brandAccent: '#16a34a',
                 },
               },
             },

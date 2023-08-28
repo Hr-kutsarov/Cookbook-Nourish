@@ -30,22 +30,27 @@ const NavItem: React.FC<NavItemProps> = ({
             cursor-pointer
             transition
             rounded-lg
-            pr-5
-            pl-3
-            py-1
+            p-2
             
             text-slate-400
             focus:outline-none
             relative
             hover:text-slate-600
             `, 
-            active && `bg-slate-600`, 
+
+            active && `bg-gradient-to-br`, 
+            active && `from-slate-300`,
+            active && `via-slate-200`,
+            active && `to-slate-400`,
             active && `text-slate-50`,
-            active && `hover:bg-slate-600`,
-            active && `hover:bg-slate-50`,
+            active && `hover:from-slate-500`,
+            active && `hover:to-slate-50`,
+            active && `hover:text-slate-50`,
+
+ 
             active && `pr-3`
             )}>
-                <Icon size={28}/>
+                <Icon size={36}/>
                 {primary ? <p className='truncate w-100 hidden tracking-wide lg:flex'>{label}</p> : null}
         </Link>
      );

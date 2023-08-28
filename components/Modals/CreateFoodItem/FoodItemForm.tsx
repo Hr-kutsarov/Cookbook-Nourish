@@ -52,11 +52,11 @@ const FoodItemForm: React.FC = () => {
   const modalHandler = useCreateFood();
 
   const schema: ZodType<FormData> = z.object({
-    name: z.string().min(2).max(30),
-    calories: z.number().positive(),
-    proteins: z.number().positive(),
-    fats: z.number().positive(),
-    carbs: z.number().positive(),
+    name: z.string().min(2, {message: 'Error'}).max(30),
+    calories: z.number().min(1, {message: 'Error'}).positive(),
+    proteins: z.number().min(1, {message: 'Error'}).positive(),
+    fats: z.number().min(1, {message: 'Error'}).positive(),
+    carbs: z.number().min(1, {message: 'Error'}).positive(),
     seasons: z.array(
       z.object({
       value: z.string(),

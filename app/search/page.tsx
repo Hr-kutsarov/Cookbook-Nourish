@@ -108,7 +108,7 @@ export default function Search() {
 
   const weightBtnStyles = twMerge('flex p-1 hover:text-slate-400 flex items-center justify-center')
   const boxWeightIconsStyles = twMerge('grid grid-cols-5 px-1')
-  const inputSearchStyles = `lg:px-4 md:px-2 sm:px-1 flex flex-row w-full bg-slate-300 py-2`
+  const inputSearchStyles = `px-4 lg:px-4 md:px-2 sm:px-1 flex flex-row w-full bg-slate-300 py-2`
   const headingStyles = `flex items-center justify-center`
   const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none`
 
@@ -118,7 +118,7 @@ export default function Search() {
       <Header />
       
       <section className={twMerge('flex flex-col h-auto w-full min-h-[100vh] bg-slate-300')}>
-        <span className='mt-[7vh]'>
+        <span className='mt-[12vh]'>
         <Bookmarks />
         </span>
 
@@ -127,16 +127,16 @@ export default function Search() {
       <>
         <form 
         // max-h-[5vh] is the height of the search bar
-        className={twMerge(inputSearchStyles, 'group relative', 'max-h-[6vh] lg:max-h-[5vh]')}
+        className={twMerge(inputSearchStyles, 'group relative', 'py-3')}
         onSubmit={handleSubmit(onSubmit)}
         >
           <label 
-            className={twMerge('px-2 py-1 flex cursor-pointer aspect-square w-full items-center justify-center text-slate-50 rounded-md mr-2 hover:bg-slate-50 hover:text-slate-600', 'max-w-[5vh]')}
+            className={twMerge('p-2 ml-1 flex cursor-pointer aspect-square  items-center justify-center text-slate-50 rounded-md mr-2 hover:bg-slate-50 hover:text-slate-600')}
           >
             {!loadingReset 
             ? 
             <BiSearch 
-              size={24}
+              size={28}
               onClick={() => {
                 getFoods()
                 setLoadingReset(true)
@@ -150,7 +150,7 @@ export default function Search() {
               transition={{duration:1.8, delay: 0.2, repeat: Infinity}}
           >
             <BiSearch 
-              size={24} 
+              size={36} 
             />
           </motion.div>
             }
@@ -159,13 +159,13 @@ export default function Search() {
           <input 
             {...register("searchParam")}
             // class name = merging (basic styles) , with (temporary)
-            className={twMerge('px-2 py-1 flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', 'max-w-[60%]')}
+            className={twMerge('p-2 min-w-[165px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
           />
 
 
         {!loadingReset ?           
           <input 
-            className={twMerge('px-3 py-1 flex rounded-md cursor-pointer text-sm font-semibold bg-slate-600 text-slate-50 ml-2 tracking-wide hover:bg-slate-400 hover:text-slate-50', 'max-w-[20%]')}
+            className={twMerge('p-2 flex rounded-md cursor-pointer text-sm font-semibold bg-slate-600 text-slate-50 ml-2 tracking-wide hover:bg-slate-400 hover:text-slate-50', 'w-full justify-center')}
             type="submit" 
           /> 
           :           
@@ -176,7 +176,7 @@ export default function Search() {
             transition={{duration:1.8, delay: 0.2, repeat: Infinity}}
         >
           <BiSearch 
-            size={24} 
+            size={36} 
           />
         </motion.div>
         }

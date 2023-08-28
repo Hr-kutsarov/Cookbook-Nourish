@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
         destructive:
-          "lg:flex w-auto bg-gradient-to-b from-white to-slate-50 shadow-sm hover:bg-slate-50 text-slate-400 rounded-full hover:shadow-lg hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+          "lg:flex w-full bg-gradient-to-b from-white to-slate-50 shadow-sm hover:bg-slate-50 text-slate-400 rounded-full hover:shadow-lg hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         outline:
           "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:

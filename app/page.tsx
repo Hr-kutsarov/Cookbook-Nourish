@@ -19,11 +19,11 @@ const Index = async () => {
   return (
     <span className="flex w-full h-full bg-slate-200 items-center justify-center relative">
       <Header />
-      <section className="mt-[7vh] rounded-md flex flex-col w-2/3 xl:w-1/3 gap-4  min-h-[93vh] items-center justify-center">
-        <h1 className="text-5xl font-extralight flex w-full opacity-30">Home</h1>
-        <h2 className="text-4xl font-extralight text-slate-500 italic">{homepageIntroText}</h2>
-        <span className='flex w-full justify-end'>
-          <Link className='flex bg-gradient-to-r text-lg tracking-wide from-green-600 to-teal-800 hover:gradient-to-br hover:from-green-500 hover:to-teal-700 font-semibold px-3 py-1 rounded-md text-slate-50' href='search'>Quickstart</Link>
+      <section className="mt-[7vh] rounded-md flex flex-col w-3/4 xl:w-1/3 gap-4  min-h-[93vh] items-center justify-center">
+        <h1 className="text-5xl font-extralight flex w-full text-slate-300">Welcome,</h1>
+        <h2 className="text-lg font-semibold lg:text-4xl text-slate-500 italic">{homepageIntroText}</h2>
+        <span className='flex w-full justify-start'>
+          <Link className='flex bg-gradient-to-r text-lg tracking-wide from-green-600 to-teal-800 hover:gradient-to-br hover:from-green-400 hover:to-teal-600 font-semibold p-2 rounded-md text-slate-50' href='search'>Quickstart</Link>
         </span>
         {/* {children} */}
       </section>

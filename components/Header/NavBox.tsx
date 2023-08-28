@@ -34,12 +34,12 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
             active: pathname === '/browse',
             href: '/browse'
         },
-        {
-            icon: BiUpload,
-            label: 'Add Item',
-            active: pathname === '/add-food',
-            href: '/add-food'
-        },
+        // {
+        //     icon: BiUpload,
+        //     label: 'Add Item',
+        //     active: pathname === '/add-food',
+        //     href: '/add-food'
+        // },
         {
             icon: HiWrenchScrewdriver,
             label: 'Playground',
@@ -55,7 +55,7 @@ const Navigation: React.FC<NavigationProps> = ({ children }) => {
     ], [pathname])
 
   return (
-        <nav className='flex flex-row h-auto gap-1 ml-8 relative'>
+        <nav className='flex flex-row h-auto gap-1 ml-4 lg:ml-8 relative'>
             {routes.map((route) => (<NavItem key={route.label} {...route} primary/>))}
         </nav>
      );

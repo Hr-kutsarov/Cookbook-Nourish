@@ -26,7 +26,7 @@ const NavAuth: React.FC = () => {
     }, [supabase, router])
 
     return (
-        <span className='flex flex-row items-center gap-4 px-3 py-1'>
+        <span className='flex flex-row items-center'>
         {!user ? (            
             <Link
                 onClick={handler.onOpen}

@@ -16,7 +16,7 @@ const SideMenu: React.FC = () => {
         {toggler.isOpen && (
             <motion.div
                 initial={{width: 0, opacity: 0}}
-                animate={{width: '60vw', opacity: 1}}
+                animate={{width: '262px', opacity: 1}}
                 exit={{width: 0, opacity: 0}}
                 transition={{
                     duration: 0.4,
@@ -29,11 +29,8 @@ const SideMenu: React.FC = () => {
                 bg-slate-100
                 h-auto
                 right-24
-                sm:max-w-[95vw]
-                md:max-w-[240px]
-                mb-4
                 rounded-lg
-                min-h-[75vh]
+                min-h-[80vh]
                 shadow-xl
                 flex
                 flex-col

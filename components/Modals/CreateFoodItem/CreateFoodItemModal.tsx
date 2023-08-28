@@ -27,7 +27,7 @@ const CreateFoodModal: React.FC<ModalProps> = ({
     return (
     <AnimatePresence>
     {handler.isOpen && (
-        <section className="flex h-full w-full absolute z-99 items-center justify-center bg-slate-600/30 backdrop-blur-sm">
+        <section className="flex h-full w-full absolute z-30 items-center justify-center mt-[12vh] lg:mt-[7vh] backdrop-blur-sm">
         <motion.div 
         initial={{opacity: 0, y: '120vh'}}
         animate={{opacity: 1, y: '0'}}
@@ -44,27 +44,30 @@ const CreateFoodModal: React.FC<ModalProps> = ({
             justify-center
             bg-slate-50
             p-4
-            w-4/5
             md:w-3/5
             lg:w-2/5
             rounded-md
             "
         >
-            <span 
-            className="flex flex-col relative items-end cursor-pointer group text-slate-500 hover:text-rose-800 justify-center"
-            onClick={handler.onClose}>
-                <IoMdClose size={28}/>
-                {/* tooltip */}
-                <span className='absolute pr-8 right-0 hidden group-hover:flex'>
-                    <span className='bg-slate-100 relative flex text-slate-600 px-3 py-2 items-center rounded-md shadow-md'>
-                        Close
-                        {/* triangle */}
-                        <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
+            <span className='flex flex-row justify-between p-2'>
+
+            {children}
+
+                <h1 className='text-4xl font-slate-600 font-extralight items-center'>Create Food Type</h1>
+                <span 
+                className="flex flex-col relative p-2 cursor-pointer group text-slate-500 h-full justify-center "
+                onClick={handler.onClose}>
+                    <IoMdClose size={36}/>
+                    {/* tooltip */}
+                    <span className='absolute pr-8 right-0 hidden group-hover:flex'>
+                        <span className='bg-slate-100 relative flex text-slate-600 px-3 py-2 items-center rounded-md shadow-md'>
+                            Close
+                            {/* triangle */}
+                            <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
+                        </span>
                     </span>
                 </span>
             </span>
-            {children}
-            <h1 className='text-5xl font-extralight mb-8 mr-4'>Create Food Type</h1>
             <FoodItemForm />
         </motion.div>
         </section>

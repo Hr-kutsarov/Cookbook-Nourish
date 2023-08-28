@@ -20,6 +20,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'pattern': "url('./app/test.webp')",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       keyframes: {
         "accordion-down": {

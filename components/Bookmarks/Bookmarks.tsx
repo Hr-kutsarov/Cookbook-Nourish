@@ -29,10 +29,10 @@ const Bookmarks = () => {
         {/* there's a bug in NextJS rendering this. It throws a Warning: Prop `aria-controls` did not match. Server: "radix-:R36qrcq:" Client: "radix-:Rcrbdj9:" in the console. */}
         {/* TODO */}
         {/* for future reference https://github.com/radix-ui/primitives/issues/1684 */}
-         <AccordionTrigger className=" h-12 gap-4 justify-between px-8">
+         <AccordionTrigger className=" h-12 gap-4 justify-between px-6">
             {bookmarkStoreIsNotEmpty ? 
             <div 
-            className="text-slate-50 py-4 px-2"
+            className="text-slate-50 py-4 px-1"
             onClick={() => {
                 bookmarkHandler.setData([])
                 bookmarkHandler.setSumCalories(0);
@@ -40,7 +40,7 @@ const Bookmarks = () => {
                 bookmarkHandler.setSumProteins(0);
                 bookmarkHandler.setSumFats(0);
                 bookmarkHandler.setSumPrices(0);
-            }}><FaTrash /></div> : null}
+            }}><FaTrash size={28}/></div> : null}
             {bookmarkStoreIsNotEmpty 
                 ? 
                 <div>
