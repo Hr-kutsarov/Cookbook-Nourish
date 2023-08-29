@@ -297,14 +297,14 @@ const FoodFilter = () => {
                   onClick={() =>getNamesAsc()} 
                   className={buttonStyles}
                   >
-                    <RxChevronUp size={24}/>
+                    <RxChevronDown size={24}/>
                   </button> 
 
                   <button 
                   onClick={() => { getNamesDesc()} } 
                   className={buttonStyles}
                   >
-                    <RxChevronDown size={24}/>
+                    <RxChevronUp size={24}/>
                   </button>
 
                 </div>
@@ -352,14 +352,14 @@ const FoodFilter = () => {
                       onClick={() =>getCarbsAsc()} 
                       className={buttonStyles}
                       >
-                        <RxChevronUp size={24}/>
+                        <RxChevronDown size={24}/>
                       </button> 
 
                       <button 
                       onClick={() => { getCarbsDesc()} } 
                       className={buttonStyles}
                       >
-                        <RxChevronDown size={24}/>
+                        <RxChevronUp size={24}/>
                       </button>
                     </div>
 
@@ -369,14 +369,14 @@ const FoodFilter = () => {
                       onClick={() => getFatsAsc() } 
                       className={buttonStyles}
                       >
-                        <RxChevronUp size={24}/>
+                        <RxChevronDown size={24}/>
                       </button> 
 
                       <button 
                       onClick={() => { getFatsDesc()} } 
                       className={buttonStyles}
                       >
-                        <RxChevronDown size={24}/>
+                        <RxChevronUp size={24}/>
                       </button>
                     </div>
 
@@ -386,14 +386,14 @@ const FoodFilter = () => {
                       onClick={() => getPriceAsc() } 
                       className={buttonStyles}
                       >
-                        <RxChevronUp size={24}/>
+                        <RxChevronDown size={24}/>
                       </button> 
 
                       <button 
                       onClick={() => { getPriceDesc()} } 
                       className={buttonStyles}
                       >
-                        <RxChevronDown size={24}/>
+                        <RxChevronUp size={24}/>
                       </button>
                     </div>
 
@@ -613,14 +613,14 @@ const FoodFilter = () => {
                     onClick={() =>getCaloriesAsc()} 
                     className={buttonStyles}
                     >
-                      <RxChevronUp size={24}/>
+                      <RxChevronDown size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getCaloriesDesc()} } 
                     className={buttonStyles}
                     >
-                      <RxChevronDown size={24}/>
+                      <RxChevronUp size={24}/>
                     </button>
                   </div>
 
@@ -630,14 +630,14 @@ const FoodFilter = () => {
                     onClick={() =>getProteinsAsc()} 
                     className={buttonStyles}
                     >
-                      <RxChevronUp size={24}/>
+                      <RxChevronDown size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getProteinsDesc()} } 
                     className={buttonStyles}
                     >
-                      <RxChevronDown size={24}/>
+                      <RxChevronUp size={24}/>
                     </button>
                   </div>
                   
@@ -647,14 +647,14 @@ const FoodFilter = () => {
                     onClick={() =>getCarbsAsc()} 
                     className={buttonStyles}
                     >
-                      <RxChevronUp size={24}/>
+                      <RxChevronDown size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getCarbsDesc()} } 
                     className={buttonStyles}
                     >
-                      <RxChevronDown size={24}/>
+                      <RxChevronUp size={24}/>
                     </button>
                   </div>
 
@@ -664,14 +664,14 @@ const FoodFilter = () => {
                     onClick={() =>getFatsAsc()} 
                     className={buttonStyles}
                     >
-                      <RxChevronUp size={24}/>
+                      <RxChevronDown size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getFatsDesc()} } 
                     className={buttonStyles}
                     >
-                      <RxChevronDown size={24}/>
+                      <RxChevronUp size={24}/>
                     </button>
                   </div>
 
@@ -681,14 +681,14 @@ const FoodFilter = () => {
                     onClick={() =>getPriceAsc()} 
                     className={buttonStyles}
                     >
-                      <RxChevronUp size={24}/>
+                      <RxChevronDown size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getPriceDesc()} } 
                     className={buttonStyles}
                     >
-                      <RxChevronDown size={24}/>
+                      <RxChevronUp size={24}/>
                     </button>
                   </div>
                     </span>
