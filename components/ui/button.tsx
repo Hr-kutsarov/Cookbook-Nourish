@@ -15,7 +15,7 @@ const buttonVariants = cva(
         outline:
           "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         secondary:
-          "text-slate-400 flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-200 hover:text-slate-600 hover:outline-none group dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
+          "flex w-full h-full md:w-[1.5rem] md:h-[1.5rem] text-slate-400 flex md:aspect-square items-center justify-center rounded-md hover:bg-slate-200 hover:text-slate-600 hover:outline-none group dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
         ghost: "hidden lg:flex w-auto bg-gradient-to-b from-white to-slate-50 shadow-sm hover:bg-slate-50 text-slate-400 rounded-full hover:shadow-lg hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "max-w-[90%] gap-2 justify-start text-sm rounded-lg text-slate-400 hover:text-green-600 hover:shadow-sm transition-all delay-75 duration-100 hover:translate-x-1",
       },

@@ -40,8 +40,8 @@ const MainMenu: React.FC = ({}) => {
         text-slate-500
         focus:outline-none
         fixed
-        bottom-6
-        right-6
+        bottom-4
+        right-4
         shadow-md
         rounded-full
         z-50

@@ -38,14 +38,15 @@ const NavItem: React.FC<NavItemProps> = ({
             hover:text-slate-600
             `, 
 
-            active && `bg-gradient-to-br`, 
-            active && `from-slate-300`,
-            active && `via-slate-200`,
-            active && `to-slate-400`,
-            active && `text-slate-50`,
-            active && `hover:from-slate-500`,
-            active && `hover:to-slate-50`,
-            active && `hover:text-slate-50`,
+            active && `bg-gradient-radial`, 
+            active && `from-slate-100`,
+            active && `via-slate-50`,
+            active && `to-slate-200`,
+            active && `text-slate-400`,
+            active && `hover:from-slate-50`,
+            active && `hover:via-teal-50`,
+            active && `hover:to-slate-200`,
+            active && `hover:text-slate-500`,
 
  
             active && `pr-3`

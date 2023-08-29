@@ -4,7 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import useLoginModal from '@/hooks/authModal'
 import { Dispatch, SetStateAction } from "react";
-import { IoLogOut } from 'react-icons/io5';
+import { IoExitOutline } from "react-icons/io5";
 
 
 function LogoutButton({setUser}:{setUser: Dispatch<SetStateAction<string>>}) {
@@ -22,10 +22,10 @@ function LogoutButton({setUser}:{setUser: Dispatch<SetStateAction<string>>}) {
 
   return (
     <button
-      className="p-2 rounded-md text-sm text-white bg-gradient-to-br font-semibold tracking-wide from-green-600 to-teal-800 "
+      className="px-2 py-1 rounded-md text-sm text-slate-50 bg-gradient-to-br font-semibold tracking-wide from-green-600 to-teal-800 "
       onClick={signOut}
     >
-      <IoLogOut size={36} />
+      <IoExitOutline size={36} />
     </button>
   )
 }

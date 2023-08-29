@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation"
 import FoodItem from "./FoodItem"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { twMerge } from "tailwind-merge"
-import Loading from "@/components/Loaders/loading"
 
 export default function FoodList({data}: {data: Food[]}) {
     // const [foods, setFoods] = useState(data)
@@ -34,7 +33,7 @@ export default function FoodList({data}: {data: Food[]}) {
         }, [])
 
     return (
-            <section className={twMerge('flex flex-col h-full mb-32 gap-2 lg:px-4 md:px-2 sm:px-1 w-full', '')}>
+            <section className={twMerge('flex flex-col h-full mb-32 gap-2 w-full', '')}>
             <AnimatePresence>
                     <motion.div 
                     initial={{opacity: 0, y: '30vh'}}
@@ -46,7 +45,7 @@ export default function FoodList({data}: {data: Food[]}) {
                         bounce: 0.2,
                         delay: 0.1
                     }}
-                    className={twMerge("bg-slate-50 h-auto w-full flex flex-col items-between p-1 rounded-md shadow-lg")}
+                    className={twMerge(" h-auto w-full flex flex-col items-between p-1 rounded-md shadow-lg bg-slate-200")}
                     >
                         {data?.map((f) => <FoodItem key={f.id} item={f}/>)}
                     </motion.div>

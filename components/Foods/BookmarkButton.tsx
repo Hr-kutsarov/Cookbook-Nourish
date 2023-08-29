@@ -5,6 +5,7 @@ import { Food } from "@/app/types/FoodTypes";
 import bookmarkFoodDataStore from '@/hooks/bookmarkFoodStorage';
 import { Button } from "../ui/button";
 import { RxBookmark, RxBookmarkFilled } from 'react-icons/rx'
+import { twMerge } from "tailwind-merge";
 
 interface BookmarkBtnProps {
     item: Food;
@@ -49,12 +50,14 @@ const BookmarkButton: React.FC<BookmarkBtnProps> = ({ item }) => {
         return bookmarkHandler.data.find((i) => i.id === item.id)
     }, [bookmarkHandler])
 
+    const additionalBtnStyles = `text-teal-800 ml-2 md:ml-0`;
+
     return (
     <>
         {!bookmarked ? 
-        <Button className='text-teal-600' variant='link' size="lg" onClick={() => addBookmark()}><RxBookmark size={24}/></Button> 
+        <Button className={twMerge(additionalBtnStyles)} variant='link' size="lg" onClick={() => addBookmark()}><RxBookmark size={24}/></Button> 
         : 
-        <Button className='text-green-600' variant='link' size="lg" onClick={() => removeBookmark()}><RxBookmarkFilled size={24}/></Button>}
+        <Button className={twMerge(additionalBtnStyles)} variant='link' size="lg" onClick={() => removeBookmark()}><RxBookmarkFilled size={24}/></Button>}
     </>)
 }
 

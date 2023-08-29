@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation'
 import toast, { Toaster } from 'react-hot-toast';
 
 import useCreateFood from '@/hooks/createFoodModal'
+import { useEffect, useState } from "react";
 
 interface FormData {
   name: string;
@@ -48,6 +49,9 @@ interface FormData {
 }
 
 const FoodItemForm: React.FC = () => {
+  const [email, setEmail] = useState('')
+
+  const supabase = createClientComponentClient()
 
   const modalHandler = useCreateFood();
 
@@ -106,20 +110,8 @@ const FoodItemForm: React.FC = () => {
     });
 
     const onSubmit = async (formData: any) => {
-
-
-      const supabase = createClientComponentClient()
-
-      const { data: { user } } = await supabase.auth.getUser()
-
-      if (!user) {
-        toast('You are not authenticated')
-        return
-      }
-
-      if (user?.email !== process.env.ADMIN_EMAIL) {
-        toast('Only the admin can create food items.')
-        return
+      if (email !== 'hr.kutsarov89@gmail.com') {
+        return toast('oopsie')
       }
 
       const {data, error} = await supabase.from('Foods').insert([{
@@ -157,6 +149,15 @@ const FoodItemForm: React.FC = () => {
     const labelClassnames = 'flex w-full flex-row relative group justify-between items-center';
     const hiddenInfoClasses = 'absolute max-w-[60%] bottom-1 right-10 px-2 py-3 hidden group-hover:flex bg-slate-50 shadow-md text-slate-600 rounded-md text-md font-semibold'
 
+    useEffect(() => {
+      supabase.auth.getUser()
+          .then((res) => {
+              if (res.data.user) {
+                  setEmail(res.data.user.email!)
+              }
+          })
+
+  }, [supabase])
     return (
         /* "handleSubmit" will inputs before invoking "onSubmit" */
         <>

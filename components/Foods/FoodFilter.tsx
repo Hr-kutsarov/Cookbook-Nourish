@@ -271,333 +271,342 @@ const FoodFilter = () => {
     const switcher = prioritySwitcher();
 
     const headingStyles = `flex items-center justify-center`;
-    const weightBtnStyles = twMerge('flex p-1 text-slate-400 hover:text-slate-600 flex items-center justify-center');
-    const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none group`;
-    const boxWeightIconsStyles = twMerge('grid grid-cols-5 px-1');
+    const weightBtnStyles = twMerge('flex p-1 text-slate-400 hover:text-slate-600 flex items-center justify-center border-2 md:border-0 border-slate-400 rounded-md');
+    const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none group text-slate-400`;
+    const boxWeightIconsStyles = twMerge('w-full grid grid-cols-1 md:grid-cols-5');
+    const volumeAdditionalStyles = 'border-2 md:border-0 border-slate-400 max-h-[40px]'
 
     return (
-        <span className='lg:px-4 md:px-2 sm:px-1 flex bg-gradient-to-r h-[4vh] my-2'>
-        <span className='hidden px-1 py-1 text-slate-600 font-semibold rounded-md w-full xl:flex'>
-            <span className="flex w-[15%] ">
-              
-            {bookmarksHandler.data.length > 0 ?
-                  <button 
-                  onClick={() => { bookmarksHandler.setData([])} } 
-                  className={twMerge(buttonStyles, 'ml-2')}
-                  >
-                    <RxBookmark size={24}/>
-                    <span className="hidden absolute p-2 group-hover:flex bg-slate-50 shadow-md rounded-md ml-40 mb-4 text-slate-600">Remove Bookmarks</span>
-                  </button>
-                  :
-                  null}
-              {/* NAMES */}
-              <div className={twMerge(headingStyles, 'ml-4')}>
-                <button 
-                onClick={() =>getNamesAsc()} 
-                className={buttonStyles}
-                >
-                  <RxChevronUp size={24}/>
-                </button> 
-
-                <button 
-                onClick={() => { getNamesDesc()} } 
-                className={buttonStyles}
-                >
-                  <RxChevronDown size={24}/>
-                </button>
-
-              </div>
-            </span>
-            <span className="grid grid-cols-2 w-[85%]">
-                <span className="grid grid-cols-5">
-
-                  {/* CALORIES */}
-                  <div className={headingStyles}>
+        <span className='flex bg-gradient-to-r h-auto my-2'>
+          <span className='hidden px-1 py-1 text-slate-600 font-semibold rounded-md w-full xl:flex'>
+              <span className="flex flex-col md:flex-row w-[100%] md:w-[15%]">
+                
+              {bookmarksHandler.data.length > 0 ?
                     <button 
-                    onClick={() =>getCaloriesAsc()} 
-                    className={buttonStyles}
+                    onClick={() => { bookmarksHandler.setData([])} } 
+                    className={twMerge(buttonStyles, 'ml-2')}
                     >
-                      <RxChevronUp size={24}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getCaloriesDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
+                      <RxBookmark size={24}/>
+                      <span className="hidden absolute p-2 group-hover:flex bg-slate-50 shadow-md rounded-md ml-40 mb-4 text-slate-600">Remove Bookmarks</span>
                     </button>
-                  </div>
-
-                  {/* PROTEINS */}
-                  <div className={headingStyles}>
-                    <button 
-                    onClick={() =>getProteinsAsc()} 
-                    className={buttonStyles}
-                    >
-                      <RxChevronUp size={24}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getProteinsDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
-                    </button>
-                  </div>
-
-                  {/* CARBS */}
-                  <div className={headingStyles}>
-                    <button 
-                    onClick={() =>getCarbsAsc()} 
-                    className={buttonStyles}
-                    >
-                      <RxChevronUp size={24}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getCarbsDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
-                    </button>
-                  </div>
-
-                  {/* FATS */}
-                  <div className={headingStyles}>
-                    <button 
-                    onClick={() => getFatsAsc() } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronUp size={24}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getFatsDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
-                    </button>
-                  </div>
-
-                  {/* PRICE */}
-                  <div className={headingStyles}>
-                    <button 
-                    onClick={() => getPriceAsc() } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronUp size={24}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getPriceDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
-                    </button>
-                  </div>
-
-
-                </span>
-                <span className="grid grid-cols-5 w-full">
-                  {/* WEIGHT */}
-                  <div className={boxWeightIconsStyles}>
-                    <button 
-                    onClick={() =>getWeightLight()} 
-                    className={weightBtnStyles}
-                    >
-                      <FaCircle size={16}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getWeightLightMedium()} } 
-                    className={weightBtnStyles}
-                    >
-                      <FaCircle size={12}/>
-                    </button>
-
-                    <button 
-                    onClick={() => { getWeightMedium()} } 
-                    className={weightBtnStyles}
-                    >
-                      <FaCircle size={16}/>
-                    </button>
-
-                    <button 
-                    onClick={() => { getWeightMediumHeavy()} } 
-                    className={weightBtnStyles}
-                    >
-                      <FaCircle size={12}/>
-                    </button>
-                    <button 
-                    onClick={() => { getWeightHeavy()} } 
-                    className={weightBtnStyles}
-                    >
-                      <FaCircle size={16}/>
-                    </button>
-                  </div>
-
-                  {/* SEASON */}
-                  <div className={headingStyles}>
-
-                  <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getSpringFoods()}>
-                      <LuClover size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getSummerFoods()}>
-                      <RxSun size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getAutumnFoods()}>
-                      <LuCloudSunRain size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getWinterFoods()}>
-                      <LuSnowflake size={20}/>
-                    </Button>
-
-                  </div>
-
-                  {/* TASTE */}
-                  <div className={headingStyles}>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getBitterTastingFoods()}>
-                      <FaLeaf size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getSaltyTastingFoods()}>
-                      <TbSalt size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getSourTastingFoods()}>
-                      <PiOrangeSliceFill size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getSweetTastingFoods()}>
-                      <MdIcecream size={20}/>
-                    </Button>
-                    <Button 
-                      size="sm"
-                      variant='secondary'
-                      onClick={() => getUmamiTastingFoods()}>
-                      <Tb360 size={20}/>
-                    </Button>
-                  </div>
-
-                  {/* FATS */}
-                  <div className={headingStyles}>
-                  <Button 
-                    size='sm'
-                    variant='secondary'
-                    onClick={() => { getQuiet()}}
-                    >
-                      <IoMusicalNote size={18}/>
-                    </Button>
-                    <Button 
-                    size='sm'
-                    variant='secondary'
-                    onClick={() => { getQuietModerate()}}
-                    >
-                    <IoMusicalNote size={18}/>
-                    </Button>
-                    <Button 
-                    size='sm'
-                    variant='secondary'
-                    onClick={() => { getModerate()}}
-                    >
-                      <IoMusicalNote size={18}/>
-                    </Button>
-                    <Button 
-                    size='sm'
-                    variant='secondary'
-                    onClick={() => { getModerateLoud()}}
-                    >
-                      <IoMusicalNote size={18}/>
-                    </Button>
-                    <Button 
-                    size='sm'
-                    variant='secondary'
-                    onClick={() => { getLoud()}}
-                    >
-                      <IoMusicalNote size={18}/>
-                    </Button>
-                  </div>
-
-                  {/* PRICE */}
-                  <div className={headingStyles}>
-                    <button 
-                    onClick={() => getFunctionAsc() } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronUp size={18}/>
-                    </button> 
-
-                    <button 
-                    onClick={() => { getFunctionDesc()} } 
-                    className={buttonStyles}
-                    >
-                      <RxChevronDown size={24}/>
-                    </button>
-                  </div>
-                </span>
-            </span>
-        </span>
-        <span className='flex px-1 text-slate-600 font-semibold rounded-md w-full xl:hidden'>
-            <span className="flex w-[20%] gap-8">
+                    :
+                    null}
                 {/* NAMES */}
-                <div className={headingStyles}>
-                <button 
-                onClick={() =>getNamesAsc()} 
-                className={buttonStyles}
-                >
-                  <RxChevronUp size={24}/>
-                </button> 
+                <div className={twMerge(headingStyles, 'ml-4')}>
+                  <button 
+                  onClick={() =>getNamesAsc()} 
+                  className={buttonStyles}
+                  >
+                    <RxChevronUp size={24}/>
+                  </button> 
 
-                <button 
-                onClick={() => { getNamesDesc()} } 
-                className={buttonStyles}
-                >
-                  <RxChevronDown size={24}/>
-                </button>
+                  <button 
+                  onClick={() => { getNamesDesc()} } 
+                  className={buttonStyles}
+                  >
+                    <RxChevronDown size={24}/>
+                  </button>
+
                 </div>
-                <div className={headingStyles}>
+              </span>
+              <span className="grid grid-cols-2 w-[100%] md:w-[85%]">
+                  <span className="grid grid-cols-5">
+
+                    {/* CALORIES */}
+                    <div className={headingStyles}>
+                      <button 
+                      onClick={() =>getCaloriesAsc()} 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getCaloriesDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+
+                    {/* PROTEINS */}
+                    <div className={headingStyles}>
+                      <button 
+                      onClick={() =>getProteinsAsc()} 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getProteinsDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+
+                    {/* CARBS */}
+                    <div className={headingStyles}>
+                      <button 
+                      onClick={() =>getCarbsAsc()} 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getCarbsDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+
+                    {/* FATS */}
+                    <div className={headingStyles}>
+                      <button 
+                      onClick={() => getFatsAsc() } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getFatsDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+
+                    {/* PRICE */}
+                    <div className={headingStyles}>
+                      <button 
+                      onClick={() => getPriceAsc() } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getPriceDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+
+
+                  </span>
+                  <span className="grid grid-cols-5 w-full">
+                    {/* WEIGHT */}
+                    <div className={boxWeightIconsStyles}>
+                      <button 
+                      onClick={() =>getWeightLight()} 
+                      className={weightBtnStyles}
+                      >
+                        <FaCircle size={16}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getWeightLightMedium()} } 
+                      className={weightBtnStyles}
+                      >
+                        <FaCircle size={12}/>
+                      </button>
+
+                      <button 
+                      onClick={() => { getWeightMedium()} } 
+                      className={weightBtnStyles}
+                      >
+                        <FaCircle size={16}/>
+                      </button>
+
+                      <button 
+                      onClick={() => { getWeightMediumHeavy()} } 
+                      className={weightBtnStyles}
+                      >
+                        <FaCircle size={12}/>
+                      </button>
+                      <button 
+                      onClick={() => { getWeightHeavy()} } 
+                      className={weightBtnStyles}
+                      >
+                        <FaCircle size={16}/>
+                      </button>
+                    </div>
+
+                    {/* SEASON */}
+                    <div className={twMerge(headingStyles)}>
+
+                    <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getSpringFoods()}>
+                          
+                        <LuClover size={20}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getSummerFoods()}>
+                        <RxSun size={20}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getAutumnFoods()}>
+                        <LuCloudSunRain size={20}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getWinterFoods()}>
+                        <LuSnowflake size={20}/>
+                      </Button>
+
+                    </div>
+
+                    {/* TASTE */}
+                    <div className={twMerge(headingStyles, '')}>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getBitterTastingFoods()}>
+                        <FaLeaf size={18}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getSaltyTastingFoods()}>
+                        <TbSalt size={18}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getSourTastingFoods()}>
+                        <PiOrangeSliceFill size={18}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getSweetTastingFoods()}>
+                        <MdIcecream size={18}/>
+                      </Button>
+                      <Button 
+                        size="sm"
+                        variant='secondary'
+                        onClick={() => getUmamiTastingFoods()}>
+                        <Tb360 size={18}/>
+                      </Button>
+                    </div>
+
+                    {/* FATS */}
+                    <div className={headingStyles}>
+                    <Button 
+                      size='sm'
+                      variant='secondary'
+                      onClick={() => { getQuiet()}}
+                      >
+                        <IoMusicalNote size={18}/>
+                      </Button>
+                      <Button 
+                      size='sm'
+                      variant='secondary'
+                      onClick={() => { getQuietModerate()}}
+                      >
+                      <IoMusicalNote size={18}/>
+                      </Button>
+                      <Button 
+                      size='sm'
+                      variant='secondary'
+                      onClick={() => { getModerate()}}
+                      >
+                        <IoMusicalNote size={18}/>
+                      </Button>
+                      <Button 
+                      size='sm'
+                      variant='secondary'
+                      onClick={() => { getModerateLoud()}}
+                      >
+                        <IoMusicalNote size={18}/>
+                      </Button>
+                      <Button 
+                      size='sm'
+                      variant='secondary'
+                      onClick={() => { getLoud()}}
+                      >
+                        <IoMusicalNote size={18}/>
+                      </Button>
+                    </div>
+
+                    {/* Functionality */}
+                    <div className={twMerge(headingStyles)}>
+                      <button 
+                      onClick={() => getFunctionAsc() } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronUp size={24}/>
+                      </button> 
+
+                      <button 
+                      onClick={() => { getFunctionDesc()} } 
+                      className={buttonStyles}
+                      >
+                        <RxChevronDown size={24}/>
+                      </button>
+                    </div>
+                  </span>
+              </span>
+          </span>
+        <span className=' flex gap-4 md:gap-0 h-full flex-col-reverse md:flex-row px-1 text-slate-600 font-semibold rounded-md w-full xl:hidden'>
+            {/* sorts the food items by name  */}
+            <span className=" flex w-[100%] md:w-[20%] ml-2 md:ml-0 gap-2">
+                {/* NAMES */}
+                <div className={twMerge(headingStyles)}>
+                  {/* sorts the names in asc order */}
+                  <button 
+                  onClick={() =>getNamesAsc()} 
+                  className={buttonStyles}
+                  >
+                    <RxChevronUp size={28}/>
+                  </button> 
+                  {/* sorts the names in desc order */}
+                  <button 
+                  onClick={() => { getNamesDesc()} } 
+                  className={buttonStyles}
+                  >
+                    <RxChevronDown size={28}/>
+                  </button>
+                </div>
+
+                {/* displays a different switcher for the panels */}
+                <div className={twMerge(headingStyles, 'ml-5')}>
                 {switcher.priorityState === 'primary' 
                 ? 
                 <button 
                 onClick={() => switcher.onSecondary()} 
-                className={buttonStyles}
+                className={twMerge(buttonStyles, 'ml-3 md:ml-0')}
                 >
+                  {/* switch to secondary */}
                   <RxMixerHorizontal size={24}/>
                   </button>
                 : 
                 <button 
                 onClick={() => switcher.onPrimary()} 
                 className={buttonStyles}>
+                  {/* switch back to primary */}
                   <RxMixerHorizontal size={24}/>
                 </button>}
                 
                 </div>
             </span>
             
+            {/* switches the panel view */}
             {switcher.priorityState === 'primary' ? 
-                <span className="grid grid-cols-1 w-[80%]">
-                    <span className="grid grid-cols-5">
+                <span className="grid grid-cols-1 w-[100%] md:w-[80%]">
+                    <span className="grid grid-cols-5 gap-1 ">
                   {/* CALORIES */}
                   <div className={headingStyles}>
                     <button 
@@ -685,10 +694,10 @@ const FoodFilter = () => {
                     </span>
                 </span>
                 :
-                <span className="grid grid-cols-1 w-[80%]">
-                <span className="grid grid-cols-5 w-full">
-                  {/* WEIGHT */}
-                  <div className={boxWeightIconsStyles}>
+              <span className="grid grid-cols-1 w-[100%] md:w-[80%]">
+                <span className="grid grid-cols-5 w-full gap-1">
+                  {/* WEIGHT on small screen with buttons or drawer?*/}
+                  <div className={twMerge(boxWeightIconsStyles, 'flex-col')}>
                     <button 
                     onClick={() =>getWeightLight()} 
                     className={weightBtnStyles}
@@ -697,7 +706,7 @@ const FoodFilter = () => {
                     </button>  
                     <button 
                     onClick={() => { getWeightLightMedium()} } 
-                    className={weightBtnStyles}
+                    className={twMerge(weightBtnStyles)}
                     >
                       <FaCircle size={12}/>
                     </button>
@@ -724,27 +733,31 @@ const FoodFilter = () => {
                   </div>
 
                   {/* SEASON */}
-                  <div className={headingStyles}>
+                  <div className={twMerge('grid grid-cols-2 gap-1')}>
                     <Button 
                       size="sm"
+                      className={twMerge('items-center justify-center flex w-full h-full border-2 md:border-0 border-slate-400')}
                       variant='secondary'
                       onClick={() => getSpringFoods()}>
                       <LuClover size={20}/>
                     </Button>
                     <Button 
                       size="sm"
+                      className={twMerge('items-center justify-center flex w-full h-full border-2 md:border-0 border-slate-400')}
                       variant='secondary'
                       onClick={() => getSummerFoods()}>
                       <RxSun size={20}/>
                     </Button>
                     <Button 
                       size="sm"
+                      className={twMerge('items-center justify-center flex w-full h-full border-2 md:border-0 border-slate-400')}
                       variant='secondary'
                       onClick={() => getAutumnFoods()}>
                       <LuCloudSunRain size={20}/>
                     </Button>
                     <Button 
                       size="sm"
+                      className={twMerge('items-center justify-center flex w-full h-full border-2 md:border-0 border-slate-400')}
                       variant='secondary'
                       onClick={() => getWinterFoods()}>
                       <LuSnowflake size={20}/>
@@ -780,49 +793,59 @@ const FoodFilter = () => {
                   </div>
 
                   {/* TASTE */}
-                  <div className={headingStyles}>
+                  <div className={twMerge(headingStyles, 'grid grid-cols-3 gap-1')}>
                     <Button 
                     size='sm'
                     variant='secondary'
+                    className={twMerge('w-full h-full md:border-0 border-2 border-slate-400')}
                     onClick={() => { getBitterTastingFoods()}}
                     >
-                      <FaLeaf size={18}/>
+                      <FaLeaf size={28}/>
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge('w-full h-full md:border-0 border-2 border-slate-400')}
                     variant='secondary'
+                    
                     onClick={() => { getSaltyTastingFoods()}}
                     >
-                      <TbSalt size={18}/>
+                      <TbSalt size={28}/>
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge('w-full h-full md:border-0 border-2 border-slate-400')}
                     variant='secondary'
+                    
                     onClick={() => { getSourTastingFoods()}}
                     >
-                      <PiOrangeSliceFill size={18}/>
+                      <PiOrangeSliceFill size={28}/>
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge('w-full h-full md:border-0 border-2 border-slate-400')}
                     variant='secondary'
+                    
                     onClick={() => { getSweetTastingFoods()}}
                     >
-                      <MdIcecream size={18}/>
+                      <MdIcecream size={28}/>
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge('w-full h-full md:border-0 border-2 border-slate-400')}
                     variant='secondary'
+                    
                     onClick={() => { getUmamiTastingFoods()}}
                     >
-                      <Tb360 size={18}/>
+                      <Tb360 size={28}/>
                     </Button>
                   </div>
 
                   {/* VOLUME */}
-                  <div className={headingStyles}>
+                  <div className={twMerge(boxWeightIconsStyles, 'items-center')}>
                     <Button 
                     size='sm'
                     variant='secondary'
+                    className={twMerge(volumeAdditionalStyles)}
                     onClick={() => { getQuiet()}}
                     >
                       <IoMusicalNote size={18}/>
@@ -830,6 +853,7 @@ const FoodFilter = () => {
                     <Button 
                     size='sm'
                     variant='secondary'
+                    className={twMerge(volumeAdditionalStyles)}
                     onClick={() => { getQuietModerate()}}
                     >
                       <IoMusicalNote size={18}/>
@@ -837,12 +861,14 @@ const FoodFilter = () => {
                     <Button 
                     size='sm'
                     variant='secondary'
+                    className={twMerge(volumeAdditionalStyles)}
                     onClick={() => { getModerate()}}
                     >
                       <IoMusicalNote size={18}/>
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge(volumeAdditionalStyles)}
                     variant='secondary'
                     onClick={() => { getModerateLoud()}}
                     >
@@ -850,6 +876,7 @@ const FoodFilter = () => {
                     </Button>
                     <Button 
                     size='sm'
+                    className={twMerge(volumeAdditionalStyles)}
                     variant='secondary'
                     onClick={() => { getLoud()}}
                     >
@@ -860,17 +887,17 @@ const FoodFilter = () => {
                   </div>
 
                   {/* FUNCTIONALITY */}
-                  <div className={headingStyles}>
+                  <div className={twMerge(headingStyles, 'gap-4 flex-col')}>
                     <button 
                     onClick={() => getFunctionAsc() } 
-                    className={buttonStyles}
+                    className={twMerge(buttonStyles, 'text-slate-400')}
                     >
-                      <RxChevronUp size={18}/>
+                      <RxChevronUp size={24}/>
                     </button> 
 
                     <button 
                     onClick={() => { getFunctionDesc()} } 
-                    className={buttonStyles}
+                    className={twMerge(buttonStyles, 'text-slate-400')}
                     >
                       <RxChevronDown size={24}/>
                     </button>

@@ -118,10 +118,7 @@ export default function Search() {
       <Header />
       
       <section className={twMerge('flex flex-col h-auto w-full min-h-[100vh] bg-slate-300')}>
-        <span className='mt-[12vh]'>
         <Bookmarks />
-        </span>
-
 
       {/* SEARCH FORM */}
       <>
@@ -159,13 +156,13 @@ export default function Search() {
           <input 
             {...register("searchParam")}
             // class name = merging (basic styles) , with (temporary)
-            className={twMerge('p-2 min-w-[165px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
+            className={twMerge('p-2 min-w-[165px] sm:min-w-[180px] md:min-w-[205px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
           />
 
 
         {!loadingReset ?           
           <input 
-            className={twMerge('p-2 flex rounded-md cursor-pointer text-sm font-semibold bg-slate-600 text-slate-50 ml-2 tracking-wide hover:bg-slate-400 hover:text-slate-50', 'w-full justify-center')}
+            className={twMerge('p-2 flex rounded-md cursor-pointer text-sm font-semibold bg-slate-600 text-slate-50 ml-2 tracking-wide hover:bg-slate-400 hover:text-slate-50', 'w-full justify-center md:max-w-[120px]')}
             type="submit" 
           /> 
           :           
@@ -187,15 +184,16 @@ export default function Search() {
         <Toaster />
       </>
 
-      {/* Heading */}
-      <HeadingFoodList />
+        <span className='px-4'>
+          {/* Heading */}
+          <HeadingFoodList />
 
-      {/* Filter buttons */}
-      <FoodFilter />
+          {/* Filter buttons */}
+          <FoodFilter />
 
-      {/* Search Results */}
-      
-      <FoodList data={dataStorage.data}/>
+          {/* Search Results */}
+          <FoodList data={dataStorage.data}/>
+        </span>
 
       
     </section>
