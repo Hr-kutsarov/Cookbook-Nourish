@@ -61,6 +61,7 @@ export default function Search() {
   // CREATE QUERY WORKER
   const supabase = createClientComponentClient()
 
+
   // GET INITIAL DATA
   const getFoods = async () => {
     const { data } = await supabase.from('Foods').select()
@@ -106,11 +107,7 @@ export default function Search() {
     getFoods()
   }, [supabase])
 
-  const weightBtnStyles = twMerge('flex p-1 hover:text-slate-400 flex items-center justify-center')
-  const boxWeightIconsStyles = twMerge('grid grid-cols-5 px-1')
   const inputSearchStyles = `px-4 lg:px-4 md:px-2 sm:px-1 flex flex-row w-full bg-slate-300 py-2`
-  const headingStyles = `flex items-center justify-center`
-  const buttonStyles = `flex aspect-square w-6 items-center justify-center rounded-md hover:bg-slate-400 hover:text-slate-50 hover:outline-none`
 
   return (
 
@@ -141,7 +138,7 @@ export default function Search() {
             />
           :
           <motion.div
-            className={twMerge()}
+            className={twMerge('')}
             initial={{ opacity: 0}}
               animate={{ opacity: 1}}
               transition={{duration:1.8, delay: 0.2, repeat: Infinity}}
@@ -156,7 +153,7 @@ export default function Search() {
           <input 
             {...register("searchParam")}
             // class name = merging (basic styles) , with (temporary)
-            className={twMerge('p-2 min-w-[165px] sm:min-w-[180px] md:min-w-[205px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
+            className={twMerge('p-2 min-w-[165px] h-[3rem] sm:min-w-[180px] md:min-w-[205px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
           />
 
 
@@ -167,7 +164,7 @@ export default function Search() {
           /> 
           :           
           <motion.div
-          className={twMerge('bg-slate-600')}
+          className={twMerge('p-2 items-center justify-center flex min-w-[120px] rounded-md ml-2')}
           initial={{ opacity: 0}}
             animate={{ opacity: 1}}
             transition={{duration:1.8, delay: 0.2, repeat: Infinity}}
