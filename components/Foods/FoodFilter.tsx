@@ -277,8 +277,8 @@ const FoodFilter = () => {
     const volumeAdditionalStyles = 'border-2 md:border-0 border-slate-400 max-h-[40px]'
 
     return (
-        <span className='flex bg-gradient-to-r h-auto my-2'>
-          <span className='hidden px-1 py-1 text-slate-600 font-semibold rounded-md w-full xl:flex'>
+        <span className='flex bg-gradient-to-r h-auto my-2 md:px-4'>
+          <span className='hidden xl:flex px-1 py-1 text-slate-600 font-semibold rounded-md w-full '>
               <span className="flex flex-col md:flex-row w-[100%] md:w-[15%]">
                 
               {bookmarksHandler.data.length > 0 ?
@@ -560,7 +560,7 @@ const FoodFilter = () => {
                   </span>
               </span>
           </span>
-        <span className=' flex gap-4 md:gap-0 h-full flex-col-reverse md:flex-row px-1 text-slate-600 font-semibold rounded-md w-full xl:hidden'>
+          <span className='xl:hidden flex gap-4 md:gap-0 h-full flex-col-reverse md:flex-row text-slate-600 font-semibold rounded-md w-full '>
             {/* sorts the food items by name  */}
             <span className=" flex w-[100%] md:w-[20%] ml-2 md:ml-0 gap-2">
                 {/* NAMES */}
@@ -733,7 +733,7 @@ const FoodFilter = () => {
                   </div>
 
                   {/* SEASON */}
-                  <div className={twMerge('grid grid-cols-2 gap-1')}>
+                  <div className={twMerge('grid grid-cols-2 md:flex items-center justify-center gap-1 md:gap-2')}>
                     <Button 
                       size="sm"
                       className={twMerge('items-center justify-center flex w-full h-full border-2 md:border-0 border-slate-400')}
@@ -793,7 +793,7 @@ const FoodFilter = () => {
                   </div>
 
                   {/* TASTE */}
-                  <div className={twMerge(headingStyles, 'grid grid-cols-3 gap-1')}>
+                  <div className={twMerge(headingStyles, 'grid grid-cols-3 md:flex gap-1 md:gap-2')}>
                     <Button 
                     size='sm'
                     variant='secondary'
@@ -841,7 +841,7 @@ const FoodFilter = () => {
                   </div>
 
                   {/* VOLUME */}
-                  <div className={twMerge(boxWeightIconsStyles, 'items-center')}>
+                  <div className={twMerge(boxWeightIconsStyles, 'items-center justify-center')}>
                     <Button 
                     size='sm'
                     variant='secondary'

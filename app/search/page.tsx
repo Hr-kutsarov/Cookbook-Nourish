@@ -153,7 +153,7 @@ export default function Search() {
           <input 
             {...register("searchParam")}
             // class name = merging (basic styles) , with (temporary)
-            className={twMerge('p-2 min-w-[165px] h-[3rem] sm:min-w-[180px] md:min-w-[205px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
+            className={twMerge('p-2 min-w-[190px] h-[3rem] md:min-w-[220px] flex rounded-md focus:outline-none text-sm font-semibold text-slate-600 tracking-wide', '')}
           />
 
 

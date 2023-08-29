@@ -22,7 +22,7 @@ const Bookmarks = () => {
 
     const gridValuesStyles = 'flex flex-col md:flex-row w-full items-center justify-end md:grid-cols-2 p-1 gap-2'
     const summedValuesStyles = 'flex justify-end md:ml-2 lg:pr-6 font-bold tracking-wide'
-    const macroLabelStyles = 'items-center justify-end font-semibold text-slate-500 hidden md:flex'
+    const macroLabelStyles = 'items-center justify-end font-semibold text-slate-500'
 
     return (
     <Accordion type="single" collapsible>
@@ -34,7 +34,7 @@ const Bookmarks = () => {
          <AccordionTrigger className=" h-12 gap-4 justify-between px-6">
             {bookmarkStoreIsNotEmpty ? 
             <div 
-            className="text-slate-50 py-4 px-1"
+            className="text-slate-600 py-4 px-1"
             onClick={() => {
                 bookmarkHandler.setData([])
                 bookmarkHandler.setSumCalories(0);
@@ -49,7 +49,7 @@ const Bookmarks = () => {
                     <p className={twMerge(macroLabelStyles, 'text-slate-600')}>{bookmarkHandler.data.length} bookmarked item(s)</p>
                 </div> 
                 : 
-            <div className={twMerge(macroLabelStyles, 'text-slate-600')}>Bookmarks</div>}
+            <div className={twMerge(macroLabelStyles, 'text-slate-600 ')}>Bookmarks</div>}
 
 
          </AccordionTrigger>
@@ -59,14 +59,14 @@ const Bookmarks = () => {
             ? 
         bookmarkHandler.data.map((item) => <BookmarkedItem key={`bookmarked-${item.id}`} item={item} />) 
             : 
-        <span className={twMerge(macroLabelStyles, 'justify-start')}>
+        <span className={twMerge(macroLabelStyles, 'justify-start ml-2')}>
             <h1>You do not have any bookmarks.</h1>
         </span>}
 
         {bookmarkStoreIsNotEmpty ?         
         <span className="grid grid-cols-1 md:flex md:flex-row p-2 font-semibold justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-md">
             <span className="flex mb-2 md:mb-0 md:w-[15%] pl-1 h-full">Total:</span>
-            <span className='grid grid-cols-5 md:grid-cols-6 md:w-[85%]'>
+            <span className='grid grid-cols-5 md:grid-cols-6 md:w-[85%] px-3'>
                 <span className={gridValuesStyles}>
                     <p className={twMerge(macroLabelStyles)}>Calories</p>
                     <p className={twMerge('md:hidden')}><FaHamburger /></p>

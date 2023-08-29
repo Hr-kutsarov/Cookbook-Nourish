@@ -35,7 +35,7 @@ export default function HighFatsFoods() {
         <span className={twMerge('flex flex-col bg-slate-300 min-h-[100vh]', '')}>
         <Header />
         
-            <section className={twMerge('flex flex-col h-auto w-full', 'mt-[7vh]')}>
+            <section className={twMerge('flex flex-col h-auto w-full')}>
 
             {/* Heading */}
             <HeadingFoodList />

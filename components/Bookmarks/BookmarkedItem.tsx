@@ -38,10 +38,11 @@ const BookmarkedItem: React.FC<BookmarkedItemTypes> = ({item}) => {
                 <span className="flex text-lg items-center ml-2 md:justify-center  text-slate-500 font-semibold " >
                     {item.name}
                 </span>
-                <div className="flex md:hidden w-full items-center p-1 gap-1 pl-1 md:pl-4 ">
+                <div className="flex md:hidden w-full items-center p-1 gap-1 pl-1 md:pl-4">
                     <Input 
                     type="number" 
                     step="0.01" 
+                    className="text-end"
                     onChange={(e) => {
                         bookmarkHandler.setSumCalories(bookmarkHandler.sumCalories - (item.calories * inputValue) + (item.calories * (Number(e.target.value))));
                         bookmarkHandler.setSumProteins(bookmarkHandler.sumProteins - (item.proteins * inputValue) + (item.proteins * (Number(e.target.value))))
@@ -86,6 +87,7 @@ const BookmarkedItem: React.FC<BookmarkedItemTypes> = ({item}) => {
                 <div className="hidden md:flex w-full items-center p-1 gap-1 pl-1 md:pl-4">
                     <Input 
                     type="number" 
+                    className="text-end"
                     step="0.01" 
                     onChange={(e) => {
                         bookmarkHandler.setSumCalories(bookmarkHandler.sumCalories - (item.calories * inputValue) + (item.calories * (Number(e.target.value))));
