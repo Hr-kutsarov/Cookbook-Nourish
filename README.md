@@ -10,15 +10,13 @@ It is for the kitchen chef who wants to calculate recipes.
  It's also for the students who wants to cook tasty but cheap.     It is also for all amateurs in the kitchen who can now match flavors perfectly in two clicks.
    It's for those who love to cook and want to surprize their guests next week.
 
-## Status: In development!
-
-> See the alpha version live here: [here](https://nourish-app.vercel.app/)
+## Status: Alpha version available [here](https://nourish-app.vercel.app/)
 
 This app is created to satisfy the need of browsing several cookbooks at once. You can track your nutrition, calculate your food costs, create recipes, match flavors, discover flavor affinities or simply find what you can cook with all the products that you have at home on Wednesday evening.
 
 ## Tech stack
 
-I'm using Next 13 with Supabase (cloud based PostgresQL database), TypeScript, Zod, Tailwind CSS, Framer Motion, React-Hook-Form, Zustand,  Figma
+Next 13 with Supabase (PostgreSQL), TypeScript, Zod, Tailwind CSS, Framer Motion, React-Hook-Form, Zustand
 
 ## Key concepts
 
@@ -46,11 +44,13 @@ Foods have properties and their behavior can be changed with React dynamically. 
 
 - ***DONE*** Create a loading screen between pages. (*having some fun with Framer-motion. The used effects can be seen on the /playground page*)
 
-- ***DONE*** Displayed food items should be 'bookmarked' and put in a list where their individual weight is changed and their properties such as nutrition value and price are calculated. The user should be able to manipulate only the weight and the values of all macronutrients and price should change. The summed data is displayed in additional field. 
+- ***DONE*** Displayed food items can be 'bookmarked' and put in a list where their individual weight is changed and their properties such as nutrition value and price are calculated. The user should be able to manipulate only the weight and the values of all macronutrients and price should change. The summed data is displayed in additional field.
 
-- ***TESTING*** E2E with Jest
+- ***DONE*** Optimized for all screens
 
 - ***DONE*** Deploy alpha version
+
+- ***NEXT*** E2E testing
 
 - ***NEXT*** Bookmarked data can be saved as a recipe or food log (*depends on the user's idea on how to use the data*)
 
