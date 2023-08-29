@@ -20,7 +20,7 @@ const Bookmarks = () => {
 
     let bookmarkStoreIsNotEmpty = bookmarkHandler.data.length > 0
 
-    const gridValuesStyles = 'flex flex-col md:flex-row w-full items-center justify-end md:grid-cols-2 p-1 gap-2'
+    const gridValuesStyles = 'flex flex-col md:flex-row w-full items-center justify-between md:grid-cols-2 p-1 gap-2'
     const summedValuesStyles = 'flex justify-end md:ml-2 lg:pr-6 font-bold tracking-wide'
     const macroLabelStyles = 'items-center justify-end font-semibold text-slate-500'
 
@@ -65,7 +65,7 @@ const Bookmarks = () => {
 
         {bookmarkStoreIsNotEmpty ?         
         <span className="grid grid-cols-1 md:flex md:flex-row p-2 font-semibold justify-start text-sm rounded-lg text-slate-400 hover:text-slate-600 hover:shadow-md">
-            <span className="flex mb-2 md:mb-0 md:w-[15%] pl-1 h-full">Total:</span>
+            <span className="flex mb-2 md:mb-0 md:w-[15%] pl-1 h-full"><p className="w-full text-center md:text-start font-lg">TOTAL</p></span>
             <span className='grid grid-cols-5 md:grid-cols-6 md:w-[85%] px-3'>
                 <span className={gridValuesStyles}>
                     <p className={twMerge(macroLabelStyles)}>Calories</p>
@@ -73,22 +73,22 @@ const Bookmarks = () => {
                     <p className={twMerge(summedValuesStyles, 'text-green-600')}>{bookmarkHandler.sumCalories.toFixed(2)}</p>
                 </span>
                 <span className={gridValuesStyles}>
-                    <p className={twMerge(macroLabelStyles)}>Proteins:</p>
+                    <p className={twMerge(macroLabelStyles)}>Proteins</p>
                     <p className={twMerge('md:hidden')}><TbMeat /></p>
                     <p className={twMerge(summedValuesStyles, 'text-green-700')}>{bookmarkHandler.sumProteins.toFixed(2)}</p>
                 </span>
                 <span className={gridValuesStyles}>
-                    <p className={twMerge(macroLabelStyles)}>Carbs:</p>
+                    <p className={twMerge(macroLabelStyles)}>Carbs</p>
                     <p className={twMerge('md:hidden')}><FaLeaf /></p>
                     <p className={twMerge(summedValuesStyles, 'text-emerald-700')}>{bookmarkHandler.sumCarbs.toFixed(2)}</p>
                 </span>
                 <span className={gridValuesStyles}>
-                    <p className={twMerge(macroLabelStyles)}>Fats:</p>
+                    <p className={twMerge(macroLabelStyles)}>Fats</p>
                     <p className={twMerge('md:hidden')}><FaCheese /></p>
                     <p className={twMerge(summedValuesStyles, 'text-emerald-700')}>{bookmarkHandler.sumFats.toFixed(2)}</p>
                 </span>
-                <span className={gridValuesStyles}>
-                    <p className={twMerge(macroLabelStyles)}>Price:</p>
+                <span className={twMerge(gridValuesStyles, 'justify-between')}>
+                    <p className={twMerge(macroLabelStyles)}>Price</p>
                     <p className={twMerge('md:hidden')}>$</p>
                     <p className={twMerge(summedValuesStyles, 'text-teal-800')}>{bookmarkHandler.sumPrices.toFixed(2)}</p>
                 </span>
