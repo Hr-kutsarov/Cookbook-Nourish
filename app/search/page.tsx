@@ -125,23 +125,23 @@ export default function Search() {
         onSubmit={handleSubmit(onSubmit)}
         >
           <label 
-            className={twMerge('p-2 ml-1 flex cursor-pointer aspect-square  items-center justify-center text-slate-50 rounded-md mr-2 hover:bg-slate-50 hover:text-slate-600')}
+            className={twMerge('p-2 ml-1 flex cursor-pointer aspect-square  items-center justify-center text-slate-50 rounded-md mr-2 hover:bg-slate-400 bg-slate-600 hover:text-slate-600')}
           >
             {!loadingReset 
             ? 
-            <BiSearch 
+              <BiSearch 
               size={28}
               onClick={() => {
                 getFoods()
                 setLoadingReset(true)
               }}
-            />
+              />
           :
           <motion.div
             className={twMerge('')}
             initial={{ opacity: 0}}
               animate={{ opacity: 1}}
-              transition={{duration:1.8, delay: 0.2, repeat: Infinity}}
+              transition={{duration:0.4, delay: 0.2, repeat: Infinity}}
           >
             <BiSearch 
               size={36} 
