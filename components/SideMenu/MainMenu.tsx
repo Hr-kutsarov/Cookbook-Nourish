@@ -59,6 +59,7 @@ const MainMenu: React.FC = ({}) => {
                 {/* USING FLEX-REVERSE! */}
                 
                 {/* FOOD LIST SWITCHER */}
+                {menuToggler.isOpen ?
                 <span 
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700 z-50"
                 onClick={() => {switcher.priorityState === 'primary' ? switcher.onSecondary() : switcher.onPrimary()}}>
@@ -68,9 +69,11 @@ const MainMenu: React.FC = ({}) => {
                         <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
                 </span>
+                : null }
 
                 {/* OPEN SIDE MENU */}
 
+                {menuToggler.isOpen ? 
                 <span 
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 onClick={() => {sidemenuToggler.isOpen ? sidemenuToggler.onClose() : sidemenuToggler.onOpen()}}>
@@ -80,8 +83,10 @@ const MainMenu: React.FC = ({}) => {
                         <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
                     </span>
                 </span>
+                : null }
 
                 {/* OPEN CREATE FOOD MODAL */}
+                {menuToggler.isOpen ?
                 <Link 
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 href='/add-food'>
@@ -91,8 +96,10 @@ const MainMenu: React.FC = ({}) => {
                         <span className='border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2'></span>
                     </span>
                 </Link>
+                : null }
 
                 {/* NAV TO HOMEPAGE */}
+                {menuToggler.isOpen ?
                 <Link 
                 className="p-4 relative aspect-square w-full group flex hover:text-slate-700"
                 href='/'
@@ -103,6 +110,7 @@ const MainMenu: React.FC = ({}) => {
                         <span className=' border-solid border-l-slate-100 border-l-8 border-y-transparent border-y-[8px] border-r-0 absolute -right-2'></span>
                     </span>
                 </Link>
+                : null }
             </div>
         </nav>
     )
