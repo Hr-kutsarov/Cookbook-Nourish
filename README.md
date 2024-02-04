@@ -50,7 +50,5 @@ Foods have properties and their behavior can be changed with React dynamically. 
 
 - ***DONE*** Deploy alpha version
 
-- ***NEXT*** E2E testing
-
-- ***NEXT*** Bookmarked data can be saved as a recipe or food log (*depends on the user's idea on how to use the data*)
+# THIS PROJECT IS DISCONTINUED. THE THE NEW VERSION IS [AVALABLE HERE](https://github.com/Hr-kutsarov/Nourish_WebApp_v2)
 
