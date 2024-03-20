@@ -1,3 +1,5 @@
+# THIS PROJECT IS DISCONTINUED. THE THE NEW VERSION IS [AVALABLE HERE](https://github.com/Hr-kutsarov/Nourish_WebApp_v2)
+
 ## Preview:
 > A little backstory     
 It's 2p.m. and my shift just started. The head chef comes to me and says: "You have to make five types of salad for tomorrow's event. Any ideas?". To which I respond "Yeah I can cotally manage this!". When he leaves I reach for my phone and open the book called The Flavor Bible by Karen Page and Andrew Dornenburg. Then spend more than half an hour looking for whatever I have to find on a pdf file through a free pdf reader.   
@@ -50,5 +52,5 @@ Foods have properties and their behavior can be changed with React dynamically. 
 
 - ***DONE*** Deploy alpha version
 
-# THIS PROJECT IS DISCONTINUED. THE THE NEW VERSION IS [AVALABLE HERE](https://github.com/Hr-kutsarov/Nourish_WebApp_v2)
+
 
